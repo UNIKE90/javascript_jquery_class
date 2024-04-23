@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제이쿼리 문서객체조작_클래스조작</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    h2{color: #00f;}
+    .bg_green{background: #0f0;}
+
+    p{background: #ff0;}
+    .color1{color: #f00;}
+
+    ul li::selection{
+      background: #ff0;
+      color: #00f;
+    }
+  </style>
+  <!-- 제이쿼리 라이브러리 -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <!-- 제이쿼리 랩퍼 -->
+  <script>
+    $(document).ready(function(){
+      // h2를 클릭하면 미리만든 클래스 서식을 적용한다.
+      $('h2').click(function(){
+        $(this).addClass('bg_green');
+      });
+      // p태그를 더블클릭하면 미리만든 클래스 서식을 적용한다.
+      $('p').dblclick(function(){
+        $(this).addClass('color1');
+      });
+
+      // addClass적용하기
+      $('#btn01').click(function(){
+        $('h2').addClass('bg_green');
+        $('p').addClass('color1');
+      });
+      // removeClass하기
+      $('#btn02').click(function(){
+        $('h2').removeClass('bg_green');
+        $('p').removeClass('color1');
+      });
+
+      //toggleClass하기
+      $('#btn03').click(function(){
+        $('h2').toggleClass('bg_green');
+        $('p').toggleClass('color1');
+      });
+
+      //hasClass적용하기
+      $('#btn04').click(function(){
+        if($('h2').hasClass('bg_green')==true){ //==true 빼도 됨
+          alert('h2태그에 bg_green서식이 존재합니다.');
+        }else{
+          alert('h2태그에 bg_green서식이 존재하지 않습니다.')
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <h2>제이쿼리 문서객체조작_클래스조작</h2>
+  <p>사용자가 선택한 요소에 클래스를 추가하거나 삭제, 또는 클래스가 없는 요소를 찾아서 서식을 적용하는 메소드이다.</p>
+  <ul>
+    <li>addClass() - 선택한 요소에 클래스 서식을 추가</li>
+    <li>removeClass() - 선택한 요소에 클래스 서식을 제거</li>
+    <li>toggleClass() - 선택한 요소에 클래스 서식을 추가/제거</li>
+    <li>hasClass() - 선택한 요소에 해당 클래스 이름이 있는지 여부를 판단하여 true, false값으로 표시</li>
+    <li>class() - 사용자가 선택한 요소에 서식을 적용</li>
+  </ul>
+
+  <h3>1. 실습하기</h3>
+  <p>아래 클릭하면 class서식 적용하기</p>
+
+  <div class="box">
+    아래 버튼을 클릭시 현재 박스요소에 서식을 적용하거나 제거하기
+  </div>
+  <input type="button" value="addClass적용하기" id="btn01">
+  <input type="button" value="removeClass적용하기" id="btn02">
+  <input type="button" value="toggleClass적용하기" id="btn03">
+  <input type="button" value="hasClass적용하기" id="btn04">
+
+  <h3>실습1. 아이콘폰트를 활용하여 '일시정지'버튼 클릭시 '플레이'버튼변경, 다시 클릭시 '일시정지'버튼으로 나오게 하기</h3>
+  <i class="fas fa-pause"></i> <br>
+  <i class="fas fa-bars"></i><br>
+  <i class="fas fa-angle-left"></i><br>
+  <i class="fas fa-angle-up"></i>
+
+  <script>
+    $(document).ready(function(){
+      $('.fa-pause').click(function(){ //아이콘 폰트를 클릭하면
+        if($(this).hasClass('fas fa-pause')){ //pause클래스 존재한다면
+          $(this).attr('class','fas fa-play'); //play로 이름을 변경하고
+        }else{ //그렇지 않다면
+          $(this).attr('class','fas fa-pause'); //pause로 변경한다.
+        }
+      })
+
+      $('.fa-bars').click(function(){
+        if($(this).hasClass('fas fa-bars')){
+          $(this).attr('class', 'fas fa-times');
+        }else{
+          $(this).attr('class', 'fas fa-bars');
+        }
+      });
+
+      $('.fa-angle-left').click(function(){
+        if($(this).hasClass('fas fa-angle-left')){
+          $(this).attr('class', 'fas fa-angle-right');
+        }else{
+          $(this).attr('class', 'fas fa-angle-left');
+        }
+      });
+      
+      $('.fa-angle-up').click(function(){
+        if($(this).hasClass('fas fa-angle-up')){
+          $(this).attr('class', 'fas fa-angle-down');
+        }else{
+          $(this).attr('class', 'fas fa-angle-up');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

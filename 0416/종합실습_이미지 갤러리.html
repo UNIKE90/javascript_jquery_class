@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>종합실습_이미지 갤러리</title>
+  <link rel="stylesheet" href="./css/gallery.css" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+  <section class="box_photo">
+    <div class="title_area">
+      <h2>포토</h2>
+      <span class="count"></span>
+      <div class="user_btn">
+        <input type="button" value="원본보기" class="button">
+        <input type="button" value="주소복사" class="button">
+      </div>
+    </div>
+    <div class="sub_area">
+      <ul>
+        <li>스틸컷</li>
+        <li>포스터</li>
+      </ul>
+    </div>
+    <article class="photo">
+
+      <!-- 썸네일 이미지 목록 -->
+      <div class="list_area">
+        <i class="fas fa-angle-left"></i>
+        <ul class="list_photo">
+          <li><img src="./images01/photo1.jpg" alt="버튼사진"></li>
+          <li><img src="./images01/photo2.jpg" alt="버튼사진"></li>
+          <li><img src="./images01/photo3.jpg" alt="버튼사진"></li>
+          <li><img src="./images01/photo4.jpg" alt="버튼사진"></li>
+          <li><img src="./images01/photo5.jpg" alt="버튼사진"></li>
+          <li><img src="./images01/photo6.jpg" alt="버튼사진"></li>
+          <li><img src="./images01/photo7.jpg" alt="버튼사진"></li>
+          <li><img src="./images01/photo8.jpg" alt="버튼사진"></li>
+          <li><img src="./images01/photo9.jpg" alt="버튼사진"></li>
+          <li><img src="./images01/photo10.jpg" alt="버튼사진"></li>
+          <li><img src="./images01/photo11.jpg" alt="버튼사진"></li>
+          <li><img src="./images01/photo12.jpg" alt="버튼사진"></li>
+          <li><img src="./images01/photo13.jpg" alt="버튼사진"></li>
+          <li><img src="./images01/photo14.jpg" alt="버튼사진"></li>
+          <li><img src="./images01/photo15.jpg" alt="버튼사진"></li>
+          <li><img src="./images01/photo16.jpg" alt="버튼사진"></li>
+          <li><img src="./images01/photo17.jpg" alt="버튼사진"></li>
+        </ul>
+        <i class="fas fa-angle-right"></i>
+      </div>
+
+      <!-- 큰 사진이 나오는 박스 -->
+      <div class="main_photo">
+        <div class="arrow">
+          <i class="fas fa-angle-left"></i>
+          <i class="fas fa-angle-right"></i>
+          <img src="./images01/photo1.jpg" alt="메인사진" id="main">
+        </div>
+      </div>
+
+      <!-- 페이지 번호표시 -->
+      <div id="photo_title">
+        <span id="img_num"></span>
+      </div>
+    </article>
+  </section>
+
+  <script src="./script/gallery.js"></script>
+</body>
+</html>

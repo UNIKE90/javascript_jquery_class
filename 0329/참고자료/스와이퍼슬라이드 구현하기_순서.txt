@@ -1,0 +1,10 @@
+1. css폴더에 swiper.css파일 연결
+2. script폴더에 swiper.js파일 연결
+3. html태그 작성
+ -swiper container
+ -swiper wrapper
+ -swiper slide
+ -swiper-pagination
+ -swiper-button-next
+ -swiper-button-prev
+4. body태그 아래쪽에 script소스삽입

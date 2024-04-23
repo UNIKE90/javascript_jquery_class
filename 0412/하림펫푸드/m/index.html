@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>하림펫푸드 모바일홈페이지</title>
+  <!-- 초기화 -->
+  <link rel="stylesheet" href="../css/reset.css">
+  <!-- 아이콘폰트 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- common.css -->
+  <link rel="stylesheet" href="./css/common.css" type="text/css">
+</head>
+<body>
+  <input type="checkbox" id="toggle">
+  <!-- 상단헤더영역 -->
+  <header>
+    <h1><a href="index.html" title="메인페이지로 바로가기">
+      <img src="../images/logo2.png" alt="상단로고">
+    </a></h1>
+
+    <!-- 토글버튼 -->
+    <label for="toggle" class="fas fa-bars"></label>
+    <!-- 장바구니 -->
+    <a href="cart.html" title="장바구니" class="cart_btn"><i class="fas fa-shopping-cart"><span>장바구니</span></i></a>
+
+    <!-- 전체메뉴 -->
+    <nav>
+      <label for="toggle" class="fas fa-times"><span>닫기</span></label>
+      <!-- 검색폼 -->
+      <fieldset>
+        <legend>검색</legend>
+        <input type="search" name="search" id="search" placeholder="이달의 특가 5%" maxlength="50">
+        <label for="search" class="fas fa-search"><span>검색버튼</span></label>
+      </fieldset>
+      <ul class="gnb">
+        <li><a href="brand.html" title="브랜드">브랜드<i class="fas fa-angle-down"></i></a>
+          <ul class="sub">
+            <li><a href="brand.html" title="가장 맛있는 시간 30일">가장맛있는시간30일</a></li>
+            <li><a href="#" title="더리얼">더리얼</a></li>
+            <li><a href="#" title="밥이보약">밥이보약</a></li>
+          </ul>
+        </li>
+        <li><a href="deli.html" title="정기배송">정기배송<i class="fas fa-angle-down"></i></a>
+          <ul class="sub">
+            <li><a href="deli.html" title="정기배송">정기배송</a></li>
+            <li><a href="#" title="빠른배송">빠른배송</a></li>
+          </ul>
+        </li>
+        <li><a href="dog.html" title="DOG">DOG<i class="fas fa-angle-down"></i></a>
+          <ul class="sub">
+            <li><a href="dog.html" title="오늘생산&middot;배송">오늘생산 &middot; 배송</a></li>
+            <li><a href="#" title="브랜드별">브랜드별</a></li>
+            <li><a href="#" title="연령별">연령별</a></li>
+            <li><a href="#" title="유형별">유형별</a></li>
+            <li><a href="#" title="샘플신청">샘플신청</a></li>
+            <li><a href="#" title="상품후기">상품후기</a></li>
+          </ul>
+        </li>
+        <li><a href="cat.html" title="CAT">CAT<i class="fas fa-angle-down"></i></a>
+          <ul class="sub">
+            <li><a href="cat.html" title="오늘생산&middot;배송">오늘생산 &middot; 배송</a></li>
+            <li><a href="#" title="브랜드별">브랜드별</a></li>
+            <li><a href="#" title="연령별">연령별</a></li>
+            <li><a href="#" title="유형별">유형별</a></li>
+            <li><a href="#" title="샘플신청">샘플신청</a></li>
+            <li><a href="#" title="상품후기">상품후기</a></li>
+          </ul>
+        </li>
+        <li><a href="magiz.html" title="매거진">매거진</a></li>
+        <li><a href="story.html" title="우리이야기">우리이야기<i class="fas fa-angle-down"></i></a>
+          <ul class="sub">
+            <li><a href="story.html" title="우리이야기">우리이야기</a></li>
+            <li><a href="#" title="우리의약속">우리의약속</a></li>
+            <li><a href="#" title="100%휴먼그레이드">100%휴먼그레이드</a></li>
+            <li><a href="#" title="이노베이션">이노베이션</a></li>
+            <li><a href="#" title="제조시설">제조시설</a></li>
+            <li><a href="#" title="반려견동반">반려견동반</a></li>
+          </ul>
+        </li>
+        <li><a href="tour.html" title="투어신청">투어신청</a></li>
+      </ul>
+
+      <ul class="lnb">
+        <li><a href="login.html" title="로그인">로그인</a></li>
+        <li><a href="join.html" title="회원가입">회원가입</a></li>
+        <li><a href="order.html" title="주문조회">주문조회</a></li>
+        <li><a href="cart.html" title="장바구니">장바구니</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 메인콘텐츠영역 -->
+  <main>모바일콘텐츠</main>
+
+  <!-- 푸터영역 -->
+  <footer>
+    <a href="#" title="상단으로 바로가기" id="top_btn"><i class="fas fa-angle-up"></i><br>Top</a>
+    <a href="http://sunje1013.dothome.co.kr/0401/하림펫푸드/index.html?move_pc_screen=1" title="pc버전보기">pc버전보기</a>
+  </footer>
+  <script>
+    // 메인메뉴 클릭시 서브메뉴 나오게 하고, 다른 서브가 펼쳐진게 있다면 접기
+    // 1. 변수선언
+    let mnu = document.querySelectorAll('.gnb > li > a');
+    let sub = document.querySelectorAll('.sub');
+
+    //2. 반복문을 홣용하여 사용자가 클릭한 메뉴가 몇번째인지를 알아본다.
+    for(let i=0; i<mnu.length; i++){
+      mnu[i].addEventListener('click', function(e){
+        e.preventDefault(); //a태그의 #기능을 무력화 = 새로고침 방지
+        // console.log(mnu[i]); //선택한 a태그출력
+        // console.log(i); //n번째값 출력
+        // 반복문을 사용하여 현재 보여지는 sub메뉴를 모두 숨긴다.
+        for(let j=0; j<sub.length; j++){
+          // console.log(j);
+          sub[j].style.display="none";
+        }
+        // 선택한 a태그의 서브(형제관계)
+        mnu[i].nextElementSibling.style.display="block";
+
+      });
+    }
+  </script>
+  <script>
+    // // window객체
+    // let scrollTop;
+    // const t_btn = document.getElementById('top_btn');
+    // const header = document.querySelector('header');
+
+    // window.addEventListener('scroll', function(){
+    //   scrollTop = window.scrollY;
+    //   console.log(scrollTop);
+    //   // 만약에 세로스크롤값이 900픽셀 이상일 경우라면
+    //   if(scrollTop>=900){
+    //     t_btn.classList.add('act'); //클래스 서식을 적용한다.
+    //   }else{ // 그렇지 않은 경우
+    //     t_btn.classList.remove('act'); // 클래스 서식을 제거한다.
+    //   }
+
+    //   // 세로스크롤값이 100이상이면 헤더에 서식을 적용하고
+    //   if(scrollTop>=100){
+    //     header.classList.add('h_act');
+    //   }else{ // 그렇지 않으면 헤더서식을 제거한다.
+    //     header.classList.remove('h_act');
+    //   }
+    // });
+  </script>
+</body>
+</html>

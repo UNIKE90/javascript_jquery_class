@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css추가속성_transform(변형속성) - 2D, 3D</title>
+  <style>
+    .box{
+      width: 100px; height: 100px;
+      background: skyblue;
+      transition: 0.3s;
+    }
+    .box01:hover{transform: scale(1.3);} /* 1 = 100% */
+    .box02:hover{transform: rotate(45deg);}
+    .box03:hover{transform: skewX(30deg);}
+    .box04:hover{transform: translate(20px, 10px);}
+
+    .ribon{
+      width: 300px; height: 34px;
+      background-color: #ff5470;
+      text-align: center;
+      padding: 3px;
+      box-shadow: 0px 0px 3px #333;
+      /* transform: rotate(45deg) translate(0px, 0px); */
+      transform: rotate(45deg);
+      position: absolute;
+      top:65px; right:-65px;
+    }
+    .ribon span{
+      color:#fff; font-size: 12px;
+      display: block; line-height: 32px;
+      border-top: 1px dashed pink;
+      border-bottom: 1px dashed pink;
+      text-shadow: 0px 0px 3px #333;
+    }
+  </style>
+</head>
+<body>
+  <h2>css추가속성_transform(변형속성) - 2D, 3D</h2>
+  <p>transform속성을 사용하여 사용자가 선택한 요소의 크기를 변경(scale)하거나, 기울기(skew), 회전(rotate), 위치이동(trnslate)을 하기 위한 속성이다.</p>
+  <ul>
+    <li>scale - 크기를 조정하기 위한 속성으로 %를 소수점으로 환산하여 입력</li>
+    <li>rotate - 회전을 위한 속성이며, 각도 입력시 단위 deg를 입력한다.</li>
+    <li>skew - 기울기를 위한 속성이며 각도 입력시 단위 deg를 입력한다.</li>
+    <li>translate - 위치를 이동하기 위한 속성이며, position:relative와 비슷한 속성</li>
+  </ul>
+
+  <h3>1. scale - 사용자가 선택한 요소의 크기를 설정함.</h3>
+  <div class="box box01"></div>
+
+  <h3>2. rotate - 사용자가 선택한 요소를 회전함.</h3>
+  <div class="box box02"></div>
+
+  <h3>3. skew - 사용자가 선택한 요소를 기울임.</h3>
+  <div class="box box03"></div>
+
+  <h3>4. translate - 사용자가 선택한 요소에 위치를 이동함.</h3>
+  <div class="box box04"></div>
+
+  <p>https://animista.net/play/basic</p>
+
+  <h3>5. 실습예제 - 리본디자인 하기</h3>
+  <div class="ribon">
+    <span>Fork me on Github</span>
+  </div>
+</body>
+</html>

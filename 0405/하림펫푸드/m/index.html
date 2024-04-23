@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>하림펫푸드 모바일홈페이지</title>
+  <!-- 아이콘폰트 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- common.css -->
+  <link rel="stylesheet" href="./css/common.css" type="text/css">
+</head>
+<body>
+  <!-- 상단헤더영역 -->
+  <header>모바일 상단</header>
+
+  <!-- 메인콘텐츠영역 -->
+  <main>모바일콘텐츠</main>
+
+  <!-- 푸터영역 -->
+  <footer>
+    <a href="#" title="상단으로 바로가기" id="top_btn"><i class="fas fa-angle-up"></i><br>Top</a>
+    <a href="http://sunje1013.dothome.co.kr/0401/하림펫푸드/index.html?move_pc_screen=1" title="pc버전보기">pc버전보기</a>
+  </footer>
+
+  <script>
+    // window객체
+    let scrollTop;
+    const t_btn = document.getElementById('top_btn');
+    const header = document.querySelector('header');
+
+    window.addEventListener('scroll', function(){
+      scrollTop = window.scrollY;
+      console.log(scrollTop);
+      // 만약에 세로스크롤값이 900픽셀 이상일 경우라면
+      if(scrollTop>=900){
+        t_btn.classList.add('act'); //클래스 서식을 적용한다.
+      }else{ // 그렇지 않은 경우
+        t_btn.classList.remove('act'); // 클래스 서식을 제거한다.
+      }
+
+      // 세로스크롤값이 100이상이면 헤더에 서식을 적용하고
+      if(scrollTop>=100){
+        header.classList.add('h_act');
+      }else{ // 그렇지 않으면 헤더서식을 제거한다.
+        header.classList.remove('h_act');
+      }
+    });
+  </script>
+</body>
+</html>

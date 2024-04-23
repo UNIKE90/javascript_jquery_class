@@ -1,0 +1,197 @@
+@charset "utf-8";
+
+:root{
+  --bg_color01:#333;
+  --bg_color02:#ccc;
+  --m_color:#E32929;
+
+  --font_size_16:16px;
+  --font_size_18:18px;
+}
+
+/* pc버전 layout.css */
+
+/* 메인영역 */
+main{padding-top: 58.91px;}
+.slide{
+  width: 100%;
+  background: var(--bg_color02);
+}
+.slide h2{
+  display: none;
+}
+/* 2. 사료무료체험 */
+#free_ex{background: var(--m_color);}
+/* #free_ex > article{
+  height: 500px;
+} */
+#free_ex h2{display: none;}
+#free_ex > article::after{
+  display: block;
+  content: "";
+  clear: both;
+}
+#free_ex > article > img{
+  width: 480px;
+  padding: 30px 30px 40px 120px;
+  float: left;
+}
+.ex_right{
+  width: 550px;
+  float: right;
+  text-align: center;
+  padding-top: 30px;
+  color: #fff;
+}
+.ex_right > h3{
+  font-size: 34px;
+  font-weight: 300;
+  padding-top: 30px;
+  padding-bottom: 60px;
+}
+.ex_right > h3 > img{
+  width: 60px;
+}
+
+.p01{
+  font-size: 16px;
+  line-height: 30px;
+  padding: 30px 0 90px 0;
+}
+
+/* 3. 하림펫 쇼핑하러가기 */
+#shop_product{
+  width: 1200px;
+  margin: 50px auto;
+  padding: 50px 0;
+}
+/* 제목서식 */
+#shop_product > h2{
+  text-align: center;
+  font-size: 36px;
+  padding: 20px 0px 60px 0px;
+  font-weight: 200;
+}
+#shop_product > h2 img{
+  width: 40px;
+  padding-right: 10px;
+
+  position: relative;
+  top: 8px;
+
+  /* transform: translateY(8px); */
+}
+.p02{text-align: center;}
+
+.product_list{
+  margin-top: 100px;
+  display: flex;
+}
+.product_list > li{
+  width: 50%;
+  text-align: center;
+}
+.product_list > li img{
+  width: 300px;
+  float: left;
+}
+/* 상품상세설명 */
+.detail{
+  padding-top: 40px;
+  line-height: 30px;
+}
+.detail > h3{
+  font-size: var(--font_size_18);
+}
+.detail > p{
+  font-size: var(--font_size_16);
+}
+/* 가격서식 */
+.price{
+  padding-top: 50px;
+  font-weight: bold;
+  font-size: var(--font_size_18);
+  color: var(--m_color);
+  display: inline-block;
+}
+.detail p:last-child{
+  padding-top: 30px;
+}
+
+/* 4. 하림펫 스토리 */
+#pet_story{
+  width: 100%;
+  background: #f0f0f0;
+}
+#pet_story h2{display: none;}
+#pet_story > article{
+  width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+#pet_story > article::after{
+  display: block;
+  content: "";
+  clear: both;
+}
+.story_left{
+  float: left;
+  text-align: center;
+  padding-left: 130px;
+}
+.story_left > h3{
+  font-size: 36px;
+  color:#333;
+  font-weight: 200;
+  padding-top: 120px;
+}
+.story_left > h3 img{
+  width: 40px;
+}
+.s_img{
+  float: right;
+  width: 430px;
+  padding: 30px 120px 0 0;
+}
+
+/* 5. 인스타그램 갤러리 */
+#instar{
+  width: 1200px;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+#instar > h2{
+  text-align: center;
+  font-size: 30px;
+  color: var(--bg_color03);
+  font-weight: normal;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  text-transform: uppercase;
+}
+#instar > h2 img{transform: translateY(8px);}
+.id_name{
+  display: block;
+  font-size: var(--font_size_16);
+  padding: 10px 0px;
+  text-transform: lowercase;
+}
+
+.gallery{
+  width: 830px;
+  margin: 0 auto;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(4, 200px);
+  grid-template-rows: repeat(3, 200px);
+  overflow: hidden;
+}
+.gallery > li{overflow: hidden;}
+.gallery img{
+  width: 100%;
+  transition: 1s;
+}
+.gallery img:hover{
+  transform: scale(1.1);
+  filter: brightness(0.8);
+}

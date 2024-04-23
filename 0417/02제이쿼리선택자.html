@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02제이쿼리 선택자(selector)</title>
+  <!-- 1. 제이쿼리 라이브러리 연결 -->
+  <script src="./script/jquery-3.7.1.js"></script>
+  <!-- 2. 제이쿼리 래퍼 -->
+  <script>
+    $(document).ready(function(){ // html문서가 로딩이 끝나면 제이쿼리를 실행한다.
+      $('#title01').css('color', '#00f'); //1. 아이디선택자
+      $('.p01').css('background', '#ff0'); //2. 클래스선택자
+      $('body').css('font-size', '14px'); //3. 태그선택자
+      $('#title01, .p01').css('border', '2px solid #f00'); //4. 그룹선택자
+      $('ul > li').css({'background':'#ccc', 'font-family':'맑은 고딕', 'color':'#00f'}); //5. 자손선택자
+      $('ul > li:nth-child(2n)').css('background','#0f0'); //6. 구조선택자
+      $('ul > li:nth-child(2n+1)').css('background','#ff0');
+      $('h2 + p').css('text-decoration', 'underline'); //7. 동위선택자
+      $('ul > li:even').css('font-family','바탕체'); //8.탐색선택자 even 인덱스값 0부터
+      $('ul > li:odd').css('font-family', '돋움체'); //odd 인덱스값 1부터
+      $('h2[id=title01]').css('font-weight', 'bolder'); //9. 속성선택자
+    });
+  </script>
+</head>
+<body>
+  <h2 id="title01">02제이쿼리 선택자(selector)</h2>
+  <p class="p01">제이쿼리에서는 css에서 사용하던 선택자를 활용하여 서식을 적용할 수 있는데, 제이쿼리는 css보다 좀더 세밀하게 선택할 수 있고, 그 개수도 많다.</p>
+  <p>http://oscarotero.com/jquery/ - API참고사이트의 왼쪽 'SELECTORS'에서 확인</p>
+
+  <h3>제이쿼리 선택자 사용하여 서식적용하기</h3>
+  <ul>
+    <li>아이디 선택자를 사용하여 글자색변경하기</li>
+    <li>클래스 선택자를 사용하여 배경색변경하기</li>
+    <li>태그선택자를 사용하여 글자크기 변경하기</li>
+    <li>그룹선택자를 사용하여 테두리 적용하기</li>
+    <li>자손, 후손선택자를 사용하여 배경색, 글자모양, 글자색상 적용하기</li>
+    <li>구조선택자를 사용하여 홀수, 짝수번째 배경색 적용하기</li>
+    <li>동위선택자를 사용하여 글자 밑줄긋기</li>
+    <li>탐색선택자를 사용하여 홀수, 짝수번째 글자모양 변경하기</li>
+    <li>속성선택자를 사용하여 글자색, 진하게 하기</li>
+  </ul>
+
+  <h3>제이쿼리에서 css서식 적용하는 방법 3가지</h3>
+  <pre>
+    .css()메소드 사용법
+    서식이 1개일 때         .css('속성','값');
+    서식이 2개 이상일 때    .css('속성','값').css('속성','값').css('속성','값'); 순차적으로 적용하고 싶을 때 사용하는 방법
+    서식이 2개 이상일 때    .css({'속성':'값','속성':'값','속성':'값'});
+  </pre>
+</body>
+</html>

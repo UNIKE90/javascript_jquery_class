@@ -1,0 +1,25 @@
+GUI방식
+
+CLI방식
+clear : 화면을 깨끗하게 비움
+
+* 전역구성설정
+git config --global core.autocrlf true
+버전관리 협업 window, mac 자동줄바꿈 차이를 없애기 위해 설정함.\
+
+git config --global user.name '영문이름'
+git config --global user.email 'id@naver.com'
+---------------------
+git config --global --list
+---------------------
+
+버전관리 시작
+1. git init		'git 정보 초기화'
+2. git status	'현재 git상태를 확인'
+3. git add .	'모든 파일, 폴더를 추적관리(상태)함.'
+4. git commit -m 'javascript class'	'메세지 기록'
+5. git log		'버전 기록 날짜, 시간을 확인'
+6. git remote add origin 'https://github.com/UNIKE90/javascript_jquery_class.git'		'원격으로 계정접속'
+7. git remote -v 	'연결잘되었는지 확인'
+8. git branch -m master main 	'master 브런치명을 main으로 변경하라'
+9. git push origin +main 	'git저장소 파일 모두 업로드함'

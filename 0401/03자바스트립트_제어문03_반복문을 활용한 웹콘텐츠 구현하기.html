@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03자바스트립트_제어문03_반복문을 활용한 웹콘텐츠 구현하기</title>
+  <style>
+    .tab_con{
+      width: 600px;
+      height: 400px;
+      border: 3px solid #000;
+      position: relative;
+    }
+    .tab_con > ul{margin: 0; padding: 0; display: flex;}
+    .tab_con > ul > li{
+      list-style: none;
+      /* width: 120px; */
+      width: 20%;
+      text-align: center;
+      background: #6262ff;
+    }
+    .tab_con > ul > li > a{
+      color: #333; text-decoration: none;
+      line-height: 50px;
+      display: block;
+    }
+    .tab_con > ul > li > a:hover{
+      text-decoration: underline;
+    }
+
+    .tab_con > ul > li.on{background: blanchedalmond;}
+
+    /* 콘텐츠 영역 서식 */
+    .tab_con div{
+      position: absolute;
+      bottom:0px; left: 0px;
+      width: 100%; height: 350px;
+      /* display: none; */
+      filter: opacity(0);
+      transition:0.5s;
+    }
+    .tab_con .con01{background: violet; z-index: 5;}
+    .tab_con .con02{background: yellow; z-index: 4;}
+    .tab_con .con03{background: cadetblue; z-index: 3;}
+    .tab_con .con04{background: sienna; z-index: 2;}
+    .tab_con .con05{background: firebrick; z-index: 1;}
+    
+    /* class on서식이 적용된 li의 자손 div 보이게 하기 */
+    .tab_con li.on div{
+      /* display: block; */
+      filter: opacity(1);
+    }
+
+    .tab_banner{
+      width: 500px;
+      height: 600px;
+      box-shadow: 0 0 10px #333;
+      position: relative;
+      text-align: center;
+    }
+    .tab_banner > ul{
+      display: flex;
+      justify-content: center;
+      padding-top:500px;
+      padding-left: 0;
+    }
+    .tab_banner > ul > li{
+      list-style: none;
+      margin-right: 10px;
+    }
+    .tab_banner > ul > li > a > img{
+      box-sizing: border-box;
+      width: 80px; height: 80px;
+      border-radius: 5px;
+    }
+    .tab_banner > ul > li.on > a > img{
+      border:1px solid purple;
+    }
+
+    .cont{
+      position: absolute;
+      top:15px; left: 15px;
+      display: none;
+    }
+    li.on .cont{
+      display:block;
+    }
+  </style>
+</head>
+<body>
+  <h2>03자바스트립트_제어문03_반복문을 활용한 웹콘텐츠 구현하기</h2>
+
+  <article class="tab_con">
+    <ul>
+      <li class="on">
+        <a href="#" title="이태리&#47;남부">이태리&#47;남부</a>
+        <div class="con01">콘텐츠1</div>
+      </li>
+      <li>
+        <a href="#" title="스페인&#47;그라나다">스페인&#47;그라나다</a>
+        <div class="con02">콘텐츠2</div>
+      </li>
+      <li>
+        <a href="#" title="프랑스&#47;몽생미쉘">프랑스&#47;몽생미쉘</a>
+        <div class="con03">콘텐츠3</div>
+      </li>
+      <li>
+        <a href="#" title="영국&#47;런던">영국&#47;런던</a>
+        <div class="con04">콘텐츠4</div>
+      </li>
+      <li>
+        <a href="#" title="그리스&#47;아테네">그리스&#47;아테네</a>
+        <div class="con05">콘텐츠5</div>
+      </li>
+    </ul>
+  </article>
+  <ul>
+    <li>.querySelectorAll('선택자') : 문서안에 선택한 요소들을 모두 선택하기</li>
+    <li>.querySelector('선택자') : 문서 안에 선택한 요소를 선택하기</li>
+    <li>.length : 선택한 요소의 개수를 구해주는 메서드</li>
+    <li>.addEventListener : 선택한 요소에 이벤트를 주고자 할 때 사용</li>
+    <li>.classList.remove('클래스명') : 선택한 요소에 클래스서식을 제거함</li>
+    <li>.classList.add('클래스명') : 선택한 요소에 클래스서식을 적용함</li>
+    <li>.parentNode : 선택한 요소의 부모요소를 찾아서 선택함</li>
+  </ul>
+
+  <article class="tab_banner">
+    <ul>
+      <li class="on">
+        <div class="cont"><img src="./img/banner01.jpg" alt="배너1"></div>
+        <a href="#" title="배너1 보기"><img src="./img/button01.jpg" alt="버튼1"></a>
+      </li>
+      <li>
+        <div class="cont"><img src="./img/banner02.jpg" alt="배너2"></div>
+        <a href="#" title="배너2 보기"><img src="./img/button02.jpg" alt="버튼2"></a>
+      </li>
+      <li>
+        <div class="cont"><img src="./img/banner03.jpg" alt="배너3"></div>
+        <a href="#" title="배너3 보기"><img src="./img/button03.jpg" alt="버튼3"></a>
+      </li>
+      <li>
+        <div class="cont"><img src="./img/banner04.jpg" alt="배너4"></div>
+        <a href="#" title="배너4 보기"><img src="./img/button04.jpg" alt="버튼4"></a>
+      </li>
+    </ul>
+  </article>
+  <script>
+    //1. 탭메뉴 목록 변수
+    const tabList = document.querySelectorAll('.tab_con li');
+
+    //2. 탭메뉴 클릭시 해당 n번째 값 출력해보기
+    for(let i=0; i<tabList.length;i++){
+      tabList[i].querySelector('a').addEventListener('click',function(e){
+        // window.alert('click');
+        for(let j=0; j<tabList.length;j++){ //li태그 개수만큼 on서식을 제거
+          tabList[j].classList.remove('on');
+        }
+        this.parentNode.classList.add('on'); //선택한 a요소의 부모인 li태그에 on클래스 적용함.
+      })
+    }
+
+    // 배너 li리스트 생성
+    const bannerList = document.querySelectorAll('.tab_banner li');
+    // 클릭 이벤트 모든 버튼에 주기
+    for(let i=0; i<bannerList.length; i++){
+      // i번째 li의 a태그에 클릭 이벤트를 생성한다
+      bannerList[i].querySelector('a').addEventListener('click', function(e){
+        e.preventDefault(); //새로고침 방지 == a태그의 이벤트를 무력시켜줌.
+        for(let j=0; j<bannerList.length;j++){ //모든 li에서 on클래스를 제거한다.
+          bannerList[j].classList.remove('on');
+        }
+        this.parentNode.classList.add('on'); //클릭한 a의 부모 요소, 즉 i번째 li에 on 클래스를 추가한다.
+      })
+    }
+  </script>
+</body>
+</html>

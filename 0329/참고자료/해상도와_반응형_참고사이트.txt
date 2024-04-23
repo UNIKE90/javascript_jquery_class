@@ -1,0 +1,6 @@
+﻿해상도 참고사이트
+- https://screensiz.es/phone
+- http://iosres.com/
+
+반응형 웹사이트
+- https://mediaqueri.es/

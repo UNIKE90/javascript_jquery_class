@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크릭트로 콘트롤버튼 구현하기(클래스조작)</title>
+  <style>
+    /* 초기화 */
+    ul, li{list-style: none; margin: 0px; padding: 0px;}
+    li{
+      width: 15px; height: 15px;
+      background: #ccc;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .act{background: #f00 !important;}
+  </style>
+</head>
+<body>
+  <h2>자바스크릭트로 콘트롤버튼 구현하기(클래스조작)</h2>
+  <p>목록태그를 활용하여 콘트롤버튼 서식을 작성하고, act클래스로 클릭시 적용할 서식을 작성하여 사용자가 버튼을 클릭하면 모든 act를 제거하고 해당 버튼에만 act클래스를 적용한다.</p>
+
+  <ul class="c_btn_list">
+    <li class="c_btn act">&nbsp;</li>
+    <li class="c_btn">&nbsp;</li>
+    <li class="c_btn">&nbsp;</li>
+    <li class="c_btn">&nbsp;</li>
+  </ul>
+
+  <!-- 1. 제이쿼리로 구현 -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script>
+    $(document).ready(function(){
+      // 1. 변수선언
+      let cbtn = $('.c_btn');
+      // 2. 사용자가 콘트롤버튼을 클릭시 해당 li에 act클래스 적용하기
+      // cbtn.click(function(){
+      //   cbtn.removeClass("act");
+      //   $(this).addClass('act');
+      // });
+    });
+  </script>
+  <!-- 2. 자바스크립트로 구현 -->
+  <script>
+    // 1. 변수선언
+    let c_btn = document.querySelectorAll('.c_btn');
+    // 2. 반복문을 사용하여 c_btn에 각각 이벤트를 설정하여 서식을 적용
+    for(let i=0; i<c_btn.length; i++){
+      console.log(c_btn[i]); //태그 목록 확인 4개 이상없이 잘 나옴
+      c_btn[i].addEventListener('click', class_act);
+    }
+    // act 서식이 변경되는 함수
+    function class_act(){
+      for(let j=0; j<c_btn.length; j++){ // 반복문을 돌려서 콘트롤 개수만큼
+        c_btn[j].classList.remove('act'); // act 서식을 찾아서 제거하고
+        this.classList.add('act'); // 클릭한 c_btn에만 서식을 적용한다.
+      }
+    }
+  </script>
+</body>
+</html>

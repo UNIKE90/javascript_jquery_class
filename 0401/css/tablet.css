@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+/* tablet 해상도일 경우 적용되는 서식 */
+
+@media screen and (min-width:768px) and (max-width:1024px){
+  body{
+  }
+  .wrap{
+    width: 100%;
+    grid-template-columns: 60% auto;
+    grid-template-areas: 
+    "header header"
+    "nav nav"
+    "cont1 cont2"
+    "footer footer"
+    ;
+  }
+  nav{
+    width: 100%;
+    height: 50px;
+  }
+  .cont1{
+    width: 100%;
+  }
+  .cont2{
+    width: 100%;
+    overflow: hidden;
+  }
+}

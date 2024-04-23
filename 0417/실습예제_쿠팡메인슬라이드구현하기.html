@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습예제_쿠팡메인슬라이드구현하기</title>
+  <style>
+    *{margin:0; padding:0;}
+    header{
+      height: 70px;
+      background: #ccc;
+      text-align: center;
+    }
+    header h1 img{width: 250px; padding-top: 10px;}
+    
+    .slide{position: relative;}
+    .slide_wrapper div{display: none;}
+    .slide_wrapper div:first-child{display: block;}
+
+    /* 내비게이션 서식 */
+    .lnb{
+      position:absolute;
+      right:10px;
+      top:45px;
+      z-index: 10;
+    }
+    /* .lnb > ul{} */
+    .lnb > ul > li{
+      list-style: none;
+      border: 2px solid #fff;
+    }
+    .lnb > ul > li:hover{
+      border: 2px solid #4285f4;
+    }
+    .act{
+      border: 2px solid #4285f4 !important;
+    }
+    /* .lnb > ul > li{
+      list-style: none;
+    }
+    .lnb > ul > li:hover{
+      outline: 2px solid #4285f4;
+    } */
+    .lnb img{display: block;}
+    /* .lnb > ul > li > a{} */
+  </style>
+  <!-- 1. 제이쿼리 라이브러리 연결하기 -->
+  <script src="./script/jquery-3.7.1.js"></script>
+  <!-- 2. 제이쿼리 랩퍼 -->
+  <script>
+    $(document).ready(function(){
+      //1. 메뉴변수
+      let lnb = $('.lnb > ul > li');
+      let slide = $('.slide_wrapper > div');
+      let i=0;
+
+      lnb.eq(i).addClass('act');
+      //2. 마우스 오버시 해당 인덱스값을 구한다.
+      lnb.mouseenter(function(){
+        i = $(this).index();
+        // console.log(i);
+        // 보이는 이미지 숨긴다.
+        slide.hide();
+        //해당 인덱스 번호에 맞는 이미지가 보여지게 한다.
+        slide.eq(i).show();
+        //기존 테두리 서식을 제거하고
+        lnb.removeClass('act');
+        //마우스 올린 부분에만 테두리 서식을 적용함
+        lnb.eq(i).addClass('act');
+
+        //기존 자동으로 움직이는 시간을 제거하여 멈추게하고
+        clearInterval(Timer);
+      });
+
+      lnb.mouseleave(function(){
+        Timer = setInterval(auto_slide, 3000);
+      })
+
+      // 자동으로 움직이게 하는 함수
+      function auto_slide(){
+        if(i==5){
+          i=0
+        }else{
+          i++;
+        }
+        slide.hide();
+        slide.eq(i).show();
+        lnb.removeClass('act');
+        lnb.eq(i).addClass('act');
+      }
+
+      let Timer = setInterval(auto_slide, 3000);
+    });
+  </script>
+</head>
+<body>
+  <!-- 상단헤더영역 -->
+  <header>
+    <h1>
+      <a href="index.html">
+        <img src="./images/logo_coupang_w350.png" alt="상단로고">
+      </a>
+    </h1>
+  </header>
+
+  <!-- 메인콘텐츠영역 -->
+  <main>
+    <article class="slide">
+      <nav class="lnb">
+        <ul>
+          <li><a href="#" title=""><img src="./images/btn1.png" alt="메뉴1"></a></li>
+          <li><a href="#" title=""><img src="./images/btn2.png" alt="메뉴2"></a></li>
+          <li><a href="#" title=""><img src="./images/btn3.jpg" alt="메뉴3"></a></li>
+          <li><a href="#" title=""><img src="./images/btn4.jpg" alt="메뉴4"></a></li>
+          <li><a href="#" title=""><img src="./images/btn5.jpg" alt="메뉴5"></a></li>
+          <li><a href="#" title=""><img src="./images/btn6.jpg" alt="메뉴6"></a></li>
+        </ul>
+      </nav>
+      <div class="slide_wrapper">
+        <div class="slide"><img src="./images/banner1.png" alt="배너1"></div>
+        <div class="slide"><img src="./images/banner2.jpg" alt="배너2"></div>
+        <div class="slide"><img src="./images/banner3.jpg" alt="배너3"></div>
+        <div class="slide"><img src="./images/banner4.jpg" alt="베너4"></div>
+        <div class="slide"><img src="./images/banner5.jpg" alt="배너5"></div>
+        <div class="slide"><img src="./images/banner6.jpg" alt="배너6"></div>
+      </div>
+    </article>
+  </main>
+
+  <!-- 푸터영역 -->
+  <footer></footer>
+</body>
+</html>

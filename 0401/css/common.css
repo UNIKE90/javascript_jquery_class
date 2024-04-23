@@ -1,0 +1,39 @@
+@charset "utf-8";
+
+
+* {margin: 0px; padding: 0px;}
+h2, p{padding: 10px;}
+li{list-style: none;}
+
+.wrap{
+  display: grid;
+  grid-gap : 10px;
+}
+header{
+  height: 250px;
+  background: #ccc;
+  grid-area:header;
+}
+nav{
+  width: 80px;
+  background: #ff0;
+  height: 610px;
+  grid-area:nav;
+}
+.cont1{
+  width: 690px;
+  background: #0f0;
+  height: 550px;
+  grid-area: cont1;
+}
+.cont2{
+  width: 245px;
+  background: #0ff;
+  height: 550px;
+  grid-area: cont2;
+}
+footer{
+  height: 50px;
+  background: #444;
+  grid-area:footer;
+}

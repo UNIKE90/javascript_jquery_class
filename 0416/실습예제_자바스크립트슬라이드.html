@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습예제_자바스크립트슬라이드</title>
+  <style>
+    *{margin: 0; padding: 0;}
+    h2{
+      background: #ccc;
+      text-align: center;
+    }
+    .swiper_container{
+      width: 100%;
+      height: 500px;
+      position: relative;
+      overflow: hidden;
+    }
+    .swiper_wrapper{
+      width: 500%;
+      position:relative;
+      left:0;
+      transition: 0.5s;
+      display: flex;
+    }
+    .swiper_slide{
+      width: 20%;
+      height: 500px;
+    }
+    .swiper_wrapper div:first-child{background: wheat;}
+    .swiper_wrapper div:nth-child(2){background: sienna;}
+    .swiper_wrapper div:nth-child(3){background: royalblue;}
+    .swiper_wrapper div:nth-child(4){background: olivedrab;}
+    .swiper_wrapper div:last-child{background: mediumvioletred;}
+    input[type=button]{
+      position: absolute;
+      top: 50%;
+    }
+    #prev{left:0;}
+    #next{right:0;}
+  </style>
+</head>
+<body>
+  <h2>자바스크립트로 슬라이드 구현하기</h2>
+  <div class="swiper_container">
+    <div class="swiper_wrapper">
+      <div class="swiper_slide"></div>
+      <div class="swiper_slide"></div>
+      <div class="swiper_slide"></div>
+      <div class="swiper_slide"></div>
+      <div class="swiper_slide"></div>
+    </div>
+    <input type="button" value="이전" id="prev">
+    <input type="button" value="다음" id="next">
+  </div>
+
+  <script>
+    const slide = document.querySelector('.swiper_wrapper');
+    const slide_cont = document.querySelectorAll('.swiper_wrapper .swiper_slide');
+    const slide_n = slide_cont.length;
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+
+    let count = 0;
+
+    function fullSlide(n){
+      slide.style.left = 100*-n+'%';
+      count = n;
+    };
+    prev.addEventListener('click', function(){
+      if(count>0){
+        fullSlide(count-1);
+      }else{
+        fullSlide(slide_n-1);
+      }
+    });
+    next.addEventListener('click', function(){
+      if(count<slide_n-1){
+        fullSlide(count+1);
+      }else{
+        fullSlide(0);
+      }
+    });
+  </script>
+</body>
+</html>

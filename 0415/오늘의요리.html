@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오늘의요리</title>
+  <style>
+    .food{
+      border: 2px solid black;
+      text-align: center;
+      width: 300px;
+      margin: 20px auto;
+    }
+    .food h2{
+      background-color: #ff0;
+      border: 2px solid black;
+      width: 160px;
+      padding: 3px 4px;
+      margin: 0 auto;
+      font-size: 0.75em;
+      position: relative; top: -15px;
+    }
+    .food img{
+      /* padding-top:20px; */
+      width: 280px;
+      height: 250px;
+    }
+  </style>
+</head>
+<body>
+  <div class="food">
+    <h2 id="title">오늘 (목)요일의 추천요리는</h2>
+    <img src="./food/food4.jpg" alt="오늘의요리" id="food">
+  </div>
+
+  <script>
+    const yoil = ['일','월','화','수','목','금','토'];
+    const food = ['food1.jpg','food2.jpg','food3.jpg','food4.jpg','food5.jpg','food6.jpg', 'food7.jpg'];
+    let today = new Date();
+    let day = today.getDay();
+
+    // 오늘(월)요일의 추천요리는 '000'입니다.
+    document.getElementById('title').innerHTML = `오늘 (${yoil[day]})요일의 추천요리는`;
+    document.getElementById('food').src = `./food/${food[day]}`;
+  </script>
+</body>
+</html>

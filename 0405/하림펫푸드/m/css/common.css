@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+html, body{
+  scroll-behavior: smooth;
+}
+a{
+  color: #333;
+  text-decoration: none;
+}
+/* common.css */
+header{
+  height: 100px;
+  background: #ccc;
+  width: 100%;
+  position: fixed;
+  transition: 0.3s;
+}
+
+/* 헤더영역에 추가될 서식 */
+.h_act{
+  background: #333 !important;
+  z-index: 1000;
+}
+
+main{
+  height: 3000px;
+  background: #ffff00;;
+}
+
+footer{background: #333;}
+#top_btn{
+  text-align: center;
+  position: fixed;
+  right: 100px;
+  bottom: 100px;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 6px 8px;
+  box-shadow: 0px 0px 3px #ccc;
+  display: none;
+}
+
+.act{
+  display: block !important;
+}

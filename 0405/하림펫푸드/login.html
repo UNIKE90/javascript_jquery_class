@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>하림펫푸드 - 로그인 페이지</title>
+  <!-- <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"> -->
+  <style>
+    fieldset.login_form{
+      width: 400px;
+      margin: 180px auto 100px auto;
+      text-align: center;
+      border: none;
+    }
+    .login_form legend{font-size: 32px; padding-bottom: 20px;}
+    .none{display: none;}
+    #id_txt, #pw_txt, .login, .naver, .cacao{
+      border: none;
+      border-radius: 5px;
+      width: 400px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+    }
+    #id_txt::-webkit-input-placeholder, #pw_txt::-webkit-input-placeholder{
+      text-align: center;
+    }
+    #id_txt, #pw_txt{
+      background: #eee;
+      margin-bottom: 10px;
+      text-align: left;
+      padding: 0 20px;
+      width: 360px;
+    }
+    .login, .naver, .cacao{
+      box-shadow: 0px 1px 2px #777;
+      margin-bottom: 10px;
+    }
+    .login{
+      background: #dd0000;
+      color: #fff;
+    }
+    .naver{
+      background: #19be19;
+      color: #fff;
+    }
+    .cacao{
+      background: #ffee00;
+      font-weight: bold;
+    }
+
+    .option{
+      text-align: left;
+      font-size: 12px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .option a{
+      text-decoration: none;
+      color: #333;
+    }
+    .option a:hover{text-decoration:underline;}
+    .id_save{
+      position: absolute;
+      right: 0;
+    }
+    #id_save{
+      accent-color: #dd0000;
+    }
+  </style>
+  <?
+    include('header.php');
+  ?>
+    <fieldset class="login_form">
+      <legend>로그인</legend>
+      <p>
+        <label for="id_txt" class="none">ID : </label><input type="text" name="id_txt" id="id_txt" placeholder="아이디">
+      </p>
+      <p>
+        <label for="pw_txt" class="none">PW : </label><input type="password" name="pw_txt" id="pw_txt" placeholder="패스워드">
+      </p>
+      <P>
+        <input type="button" value="LOGIN" class="login" id="login_btn">
+      </P>
+      <P class="option">
+        <a href="join.html" title="회원가입">회원가입</a> &#124; 
+        <a href="password_search.html" title="비번찾기">비번찾기</a>
+        <span class="id_save"><input type="checkbox" name="id_save" id="id_save" checked><label for="id_save">아이디 저장</label></span>
+      </P>
+      <p><input type="button" value="네이버 아이디로 회원가입" class="naver"></p>
+      <p><input type="button" value="카카오 아이디로 회원가입" class="cacao"></p>
+    </fieldset>
+  <script>
+    //1. 변수선언
+    let id, pw;
+    const login_btn = document.getElementById('login_btn');
+
+    //2. 로그인 버튼 클릭시 해당 id, pw값 변수에 담아서 조건식 만들기
+    login_btn.addEventListener('click', function(){
+      id_pw_check(); //함수호출
+    });
+
+    //아이디, 패스워드 체크하는 함수
+    function id_pw_check(){
+      //alert('함수호출하기');
+      id = document.getElementById('id_txt').value;
+      pw = document.getElementById('pw_txt').value;
+
+      console.log(id);
+      console.log(pw);
+
+      //3. 제어문을 활용하여 검증 결과 출력하기
+      if(id=='master'){
+        if(pw=='1234'){
+          alert('로그인 인증 확인');
+        }else{
+          alert('패스워드가 틀립니다. 다시 확인하세요.');
+          location.reload();//f5누른 것과 같이 새로고침이 되어서 사용자가 입력한 내용이 비워짐
+          // document.getElementById('id_txt').value="";
+          // document.getElementById('pw_txt').value="";
+        }
+      }else{
+        alert('아이디가 틀립니다. 다시 확인하세요.');
+        location.reload();//f5누른 것과 같이 새로고침이 되어서 사용자가 입력한 내용이 비워짐
+        // document.getElementById('id_txt').value="";
+        // document.getElementById('pw_txt').value="";
+      }
+    };
+  </script>
+  <?
+    include('footer.php');
+  ?>

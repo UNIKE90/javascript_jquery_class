@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>하림펫푸드 PC버전 메인페이지</title>
+  <!-- 파비콘 이미지 삽입하기 -->
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <!-- css초기화 -->
+  <link rel="stylesheet" href="./css/reset.css" type="text/css">
+  <link rel="stylesheet" href="./css/common.css" type="text/css">
+  <link rel="stylesheet" href="./css/main.css" type="text/css">
+  <!-- 아이콘폰트 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <style>
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* .swiper {
+      margin-left: auto;
+      margin-right: auto;
+    } */
+
+    /* 콘트롤 버튼 서식 편집하기 */
+    .swiper-pagination > span{
+      background: #F00;
+      width: 80px;
+      border-radius: 0px;
+    }
+    .swiper-button-next, .swiper-button-prev{
+      color: #333;
+      background: rgba(255,255,255,0.9);
+      padding: 8px 4px;
+    }
+  </style>
+
+  <!-- 사용자가 현재 페이지에 접속을 하면 접속한 디바이스기기를 체크하여 모바일, 태블릿일경우 모바일 페이지로 이동 -->
+  <script>
+    // 사용자가 접속한 디바이스 기기 체크하기
+    let mobile_keys = new Array('iPhone', 'iPad', 'Android', 'BlackBerry', 'Windows Phone', 'Window CE', 'LG', 'MOT', 'SAMSUNG', 'SonyErisson', 'Nokia');
+
+    // 만약에 웹페이지 주소뒤에 move_pc_screen 값이 없다면
+    if(document.URL.match('move_pc_screen')) mobile_keys=null;
+
+    // 위 배열값 개수만큼 반복하여 검사를 하고 모바일 사용자이면 아래 내용을 실행
+    for(i in mobile_keys){
+      // URL파라미터에 'move_pc_screen'가 포합되어 있을 때 아래 내용 적용
+      if(navigator.userAgent.match(mobile_keys[i]) !=null){
+        location.href='./m/index.html';
+        break;
+      }
+    }
+  </script>
+</head>
+<body>
+<form name="search" method="post" action="search">
+  <!-- 상단헤더영역시작 -->
+  <header>
+    <div class="h_top">
+      <h1><a href="index.html" title="메인페이지로 바로가기"><img src="./images/logo2.png" alt="상단로고"></a></h1>
+
+      <nav class="top_lnb">
+        <ul>
+          <li><a href="login.html" title="로그인">로그인</a></li>
+          <li><a href="join.html" title="회원가입">회원가입</a></li>
+          <li><a href="order.html" title="주문조회">주문조회</a></li>
+          <li><a href="cart.html" title="장바구니">장바구니</a></li>
+        </ul>
+      </nav>
+
+      <fieldset id="search_box">
+        <input type="search" id="search" placeholder="3월 마지막주 초특가 할인">
+        <label for="search"><i class="fas fa-search"></i></label>
+      </fieldset>
+    </div>
+    <!-- 헤더하단 (메인메뉴영역) -->
+    <div class="h_bottom">
+      <nav class="gnb">
+        <ul>
+          <li><a href="brand.html" title="브랜드">브랜드</a>
+            <ul class="sub">
+              <li><a href="brand.html" title="가장 맛있는 시간 30일">가장맛있는시간30일</a></li>
+              <li><a href="#" title="더리얼">더리얼</a></li>
+              <li><a href="#" title="밥이보약">밥이보약</a></li>
+            </ul>
+          </li>
+          <li><a href="deli.html" title="정기배송">정기배송</a>
+            <ul class="sub">
+              <li><a href="deli.html" title="정기배송">정기배송</a></li>
+              <li><a href="#" title="빠른배송">빠른배송</a></li>
+            </ul>
+          </li>
+          <li><a href="dog.html" title="DOG">DOG</a>
+            <ul class="sub">
+              <li><a href="dog.html" title="오늘생산&middot;배송">오늘생산 &middot; 배송</a></li>
+              <li><a href="#" title="브랜드별">브랜드별</a></li>
+              <li><a href="#" title="연령별">연령별</a></li>
+              <li><a href="#" title="유형별">유형별</a></li>
+              <li><a href="#" title="샘플신청">샘플신청</a></li>
+              <li><a href="#" title="상품후기">상품후기</a></li>
+            </ul>
+          </li>
+          <li><a href="cat.html" title="CAT">CAT</a>
+            <ul class="sub">
+              <li><a href="cat.html" title="오늘생산&middot;배송">오늘생산 &middot; 배송</a></li>
+              <li><a href="#" title="브랜드별">브랜드별</a></li>
+              <li><a href="#" title="연령별">연령별</a></li>
+              <li><a href="#" title="유형별">유형별</a></li>
+              <li><a href="#" title="샘플신청">샘플신청</a></li>
+              <li><a href="#" title="상품후기">상품후기</a></li>
+            </ul>
+          </li>
+          <li><a href="magiz.html" title="매거진">매거진</a></li>
+          <li><a href="story.html" title="우리이야기">우리이야기</a>
+            <ul class="sub">
+              <li><a href="story.html" title="우리이야기">우리이야기</a></li>
+              <li><a href="#" title="우리의약속">우리의약속</a></li>
+              <li><a href="#" title="100%휴먼그레이드">100%휴먼그레이드</a></li>
+              <li><a href="#" title="이노베이션">이노베이션</a></li>
+              <li><a href="#" title="제조시설">제조시설</a></li>
+              <li><a href="#" title="반려견동반">반려견동반</a></li>
+            </ul>
+          </li>
+          <li><a href="tour.html" title="투어신청">투어신청</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 메인콘텐츠영역 시작 -->
+  <main>
+    <!-- 1. 메인 슬라이드 -->
+    <article class="slide">
+      <h2>메인 슬라이드</h2>
+      <!-- Swiper -->
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <a href="#" title="">
+              <img src="./images/main01.jpg" alt="슬라이드1">
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="#" title="">
+              <img src="./images/main02.jpg" alt="슬라이드2">
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="#" title="">
+              <img src="./images/main03.jpg" alt="슬라이드3">
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="#" title="">
+              <img src="./images/main04.jpg" alt="슬라이드4">
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="#" title="">
+              <img src="./images/main05.jpg" alt="슬라이드5">
+            </a>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </article>
+
+    <!-- 2. 사료무료체험 -->
+    <section id="free_ex">
+      <h2>사료무료체험</h2>
+      <article>
+        <img src="./images/free_ex_01.jpg" alt="무료체험" id="r_banner">
+        <div class="ex_right">
+          <h3>
+            <img src="./images/gold_icon_7.png" alt="무료아이콘">
+            <br>
+            하림펫푸드 <strong>사료 무료체험</strong>
+          </h3>
+          <p class="p01">오래오래 우리함께 <br>
+            소중한 반려견 면역력으로 바꾸세요!</p>
+          <a href="#" title="체험하기" class="button">체험하기</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- 3. 하림펫 쇼핑하러가기 -->
+    <section id="shop_product">
+      <h2>
+        <img src="./images/order_step_icon_4.png" alt="쇼핑">
+        <strong>하림펫 쇼핑</strong>하러가기
+      </h2>
+      <p class="p02">
+      <a href="#" title="바로가기" class="button">바로가기</a>
+      </p>
+
+      <ul class="product_list">
+        <li>
+          <a href="#" title="">
+            <img src="./images/product05.jpg" alt="상품1">
+          </a>
+          <div class="detail">
+            <h3>[100 휴먼그레이드 밥이 보약]</h3>
+            <p>DOG 탄탄한 성장</p>
+            <p>50g &#x00d7;4</p>
+            <span class="price">판매가 : 15,000원</span>
+            <p>
+              <a href="#" title="구매하기" class="button">구매하기</a>
+            </p>
+          </div>
+        </li>
+        <li>
+          <a href="#" title="">
+            <img src="./images/product03.jpg" alt="상품2">
+          </a>
+          <div class="detail">
+            <h3>[식재료로 만든 리얼푸드 더:리얼]</h3>
+            <p>CAT 그레인프리 크런치</p>
+            <p>닭고기 시니어 1KG</p>
+            <span class="price">판매가 : 21,000원</span>
+            <p>
+              <a href="#" title="구매하기" class="button">구매하기</a>
+            </p>
+          </div>
+        </li>
+      </ul>
+
+      <!-- 콘트롤 버튼 -->
+      <ul class="c_btn">
+        <li class="on">&nbsp;</li>
+        <li>&nbsp;</li>
+        <li>&nbsp;</li>
+      </ul>
+    </section>
+
+    <!-- 4. 하림펫 스토리 -->
+    <section id="pet_story">
+      <h2>하림펫 스토리</h2>
+      <article>
+        <div class="story_left">
+          <h3>
+            <img src="./images/order_step_icon_1.png" alt="아이콘">
+            <strong>하림펫</strong>스토리
+          </h3>
+
+          <p class="p01">소중한 반려견을 위한<br>하림펫의 다양한 소식을<br>만나보세요!</p>
+
+          <a href="#" title="자세히보기" class="button">자세히보기</a>
+        </div>
+
+        <img src="./images/sns13.jpg" alt="펫푸드게임" class="s_img">
+      </article>
+    </section>
+
+    <!-- 5. 인스타그램 갤러리 -->
+    <section id="instar">
+      <h2>
+        <img src="./images/insta_icon.gif" alt="인스타그램">
+        instagram
+        <span class="id_name">@harimpetfood</span>
+      </h2>
+      <ul class="gallery">
+        <li><a href="#" title="sns"><img src="./images/sns11.jpg" alt="sns"></a></li>
+        <li><a href="#" title="sns"><img src="./images/sns14.jpg" alt="sns"></a></li>
+        <li><a href="#" title="sns"><img src="./images/sns15.jpg" alt="sns"></a></li>
+        <li><a href="#" title="sns"><img src="./images/sns16.jpg" alt="sns"></a></li>
+        <li><a href="#" title="sns"><img src="./images/sns17.jpg" alt="sns"></a></li>
+        <li><a href="#" title="sns"><img src="./images/sns19.jpg" alt="sns"></a></li>
+        <li><a href="#" title="sns"><img src="./images/sns20.jpg" alt="sns"></a></li>
+        <li><a href="#" title="sns"><img src="./images/sns22.jpg" alt="sns"></a></li>
+        <li><a href="#" title="sns"><img src="./images/sns23.jpg" alt="sns"></a></li>
+        <li><a href="#" title="sns"><img src="./images/sns24.jpg" alt="sns"></a></li>
+        <li><a href="#" title="sns"><img src="./images/sns25.jpg" alt="sns"></a></li>
+        <li><a href="#" title="sns"><img src="./images/sns26.jpg" alt="sns"></a></li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- 푸터영역 시작 -->
+  <footer>
+    <div class="f_top">
+      <nav class="f_nav">
+        <ul>
+          <li><a href="#" title="개인정보처리방침">개인정보처리방침</a></li>
+          <li><a href="#" title="쇼핑몰 이용약관">쇼핑몰 이용약관</a></li>
+        </ul>
+        <dl>
+          <dt>공지사항</dt>
+          <dd><a href="#" title="하림펫푸드 한국헌혈협회 '건강한'...">하림펫푸드 한국헌혈협회 '건강한'... <span class="date">2021-04-02</span></a></dd>
+        </dl>
+      </nav>
+    </div>
+    
+    <div class="f_bottom">
+      <dl>
+        <dt>주문 및 배송문의</dt>
+        <dd class="tel">02-2189-6543</dd>
+        <dd>평일 10:00 ~ 17:00(점심:12시 ~ 13시)</dd>
+      </dl>
+      <dl>
+        <dt>고객센터</dt>
+        <dd class="tel">080-250-2304</dd>
+        <dd>평일 10:00 ~ 17:00(점심:12시 ~ 13시)</dd>
+      </dl>
+
+      <ul class="sns">
+        <li>
+          <a href="#" title="인스타그램">
+            <i class="fa-brands fa-instagram">
+              <span>인스타그램</span>
+            </i>
+          </a>
+        </li>
+        <li>
+          <a href="#" title="트위터">
+            <i class="fa-brands fa-twitter">
+              <span>트위터</span>
+            </i>
+          </a>
+        </li>
+        <li>
+          <a href="#" title="페이스북">
+            <i class="fa-brands fa-facebook-f">
+              <span>페이스북</span>
+            </i>
+          </a>
+        </li>
+      </ul>
+
+      <select name="family_site" id="family_site" onchange="siteUrl(a);">
+        <option value="">FAMILY SITE</option>
+        <option value="http://www.naver.com">SITE01</option>
+        <option value="http://www.daum.net">SITE02</option>
+        <option value="http://www.google.co.kr">SITE03</option>
+      </select>
+    </div>
+    <address>
+      <p class="a_info">대전광역시 000 000 (0000) &#65372; 상호 및 대표자 : (주)안국인삼공사 000 &#124; 사업자번호 000-00-00000 &#124; 통신판매업신고번호 : 제0000-대전대덕 사업자정보확인 &#124; 호스팅서비스 제공자 : (주)한국인삼공사 &#124; Email : ginipet@kgc.co.kr</p>
+      <p class="a_pay">
+        <span class="title01">구매안전(에스크로)서비스 가입사실 확인</span>고객님은 안전거래를 위해 현금등으로 결제시 저희 쇼핑몰에 가입한 KCP의 구매안전서비스를 이용하실 수 있습니다.
+      </p>
+    </address>
+  </footer>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1, //화면에 보여지는 이미지 개수
+      spaceBetween: 0, //이미지와 이미지 간격
+      loop: true, // 슬라이드 이미지 로테이션 설정 false
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      pagination: { //콘트롤버튼 옵션
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: { //좌, 우버튼 옵션
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+
+    let r_num = Math.ceil(Math.random()*5);
+    document.getElementById('r_banner').src='./images/free_ex_0'+r_num+'.jpg';
+  </script>
+</form>
+</body>
+</html>

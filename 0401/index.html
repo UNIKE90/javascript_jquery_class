@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>웹사이트 제작방식-반응형웹</title>
+  <!-- 각 디바이스별 해상도에 따른 css서식 적용하기 -->
+  <link href="./css/common.css" rel="stylesheet" type="text/css">
+  <link href="./css/pc.css" rel="stylesheet" type="text/css">
+  <link href="./css/tablet.css" rel="stylesheet" type="text/css">
+  <link href="./css/mobile.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="wrap">
+  <!-- 상단헤더영역 시작 -->
+  <header>
+    <p>반응형웹(response web)이란? 하나의 html문서를 제작하여 pc, tablet, mobile화면에서 최적화된 콘텐츠를 보여주기 위한 기술이다.</p>
+    <h2>반응형웹 기술 3가지</h2>
+    <ol>
+      <li>가변단위 - em, rem, %, vh, vw...</li>
+      <li>뷰포트속성 - meta name='viewport'</li>
+      <li>미디어쿼리 - 해상도별 css적용하기</li>
+    </ol>
+    <p>반응형 웹 참고 - 디비컷, https://mediaqueri.es</p>
+  </header>
+  <nav>네비게이션 영역</nav>
+
+  <!-- 메인 콘텐츠영역 시작 -->
+    <article class="cont1">
+      <h2>뷰포트속성(viewport)</h2>
+      <p>사용자의 디바이스 화면크기(pc, tablet, mobile)에 맞추어 웹문서를 100%로 보여줄 수 있는 속성으로 pc보다 태블릿이나 모바일 사용자를 위해서 필요하다.</p>
+      <p>웹문서의 상단 head에 meta name="viewport" content="width=device-width. initial-scale=1"내용을 삽입한다.</p>
+      <ul>
+        <li>name ="viewport" : pv, tablet, mobile디바이스 화면에 맞게 설정함</li>
+        <li>width=device-width : 콘텐츠 내용을 pc, tablet, mobile화면 가로너비와 일치시킴.</li>
+        <li>initial-scale=1 : 디바이스 화면에 1:1비율로 콘텐츠를 보이도록 함. 숫자 '2'를 입력하면 화면 두배크기로 커짐.</li>
+      </ul>
+    </article>
+    <article class="cont2">
+      <h2>3. 미디어쿼리(mediaquery)속성</h2>
+      <p>브라우저의 가로너비(해상도)에 따라 또는 사용자의 디스플레이 가로 해상도에 따라 css서식을 적용하기 위한 기술로서 반응형 웹페이지 제작시 필수 속성이다.</p>
+      <p>해상도 참고사이트 : https://screensiz.es/phone, http://iosres.com</p>
+      <p>미디어쿼리 작성시 각각의 디바이스별 해상도에 대한 이해가 필요한데, 모바일 영역은 0 ~ 767px, 태블릿 영역은 768 ~ 1024px, pc영역은 1025이상 ~ 해상도 영역을 주로 설정한다. 각 디바이스별 해상도 기준을 정하는 것을 'Break Point'(중단점)라고 한다.</p>
+      <p>https://gs.statcounter.com</p>
+      <pre>
+        미디어쿼리 작성법
+        @media screen and (디바이스별 가로해상도){
+          조건에 맞는 해상도일 때 적용할 css서식;
+        }
+      </pre>
+    </article>
+
+  <!-- 하단영역 시작 -->
+  <footer>하단영역</footer>
+</div>
+</body>
+</html>

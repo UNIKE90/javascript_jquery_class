@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css추가속성_keyframe(애니메이션)</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <style>
+    .box01{
+      width: 100px; height: 100px;
+      background: #0f0;
+      animation-name: box_rotate; /* 애니메이션 이름지정 */
+      animation-duration: 10s; /* 애니메이션 시간 */ 
+      animation-iteration-count: infinite; /* 애니메이션 반복회수 */
+    }
+    /* 시나리오 작성하기 */
+    @keyframes box_rotate {
+      0%{transform: rotate(0deg);}
+      50%{transform: rotate(360deg);}
+      100%{transform: rotate(0deg);}
+    }
+
+    /* 아이콘 서식 */
+    .sns{
+      display: flex;
+      width: 430px;
+    }
+    .sns > li{
+      list-style: none;
+      margin: 20px;
+      text-align: center;
+      border-radius: 50%;
+      border:3px solid #f00;
+      padding: 13px 17px;
+    }
+    .sns > li > i{
+      font-size: 50px; color: #f00;
+    }
+    .sns > li:hover{background: #f00;}
+    .sns > li:hover i{
+      color:#fff;
+      /* animation-name: icon_rotate;
+      animation-iteration-count: infinite;
+      animation-duration: 10s; */
+      animation: icon_rotate 10s infinite;
+    }
+
+    @keyframes icon_rotate{
+      0%{transform: rotate(0deg);}
+      50%{transform: rotate(180deg);}
+      100%{transform: rotate(0deg);}
+    }
+
+    .wrap{
+      width: 600px; height: 600px;
+      border: 3px solid #000;
+      position: relative;
+    }
+    .back_circle{
+      width: 450px; height: 450px;
+      border-radius: 50%;
+      border: 5px dashed red;
+      position: absolute;
+      top: 75px; left: 75px;
+      animation: turn_left 20s linear infinite;
+    }
+    .circles{
+      width: 300px;height: 300px;
+      margin: 150px auto;
+      position: relative;
+      animation: turn_right 20s linear infinite;
+      border: 2px dashed blue;
+    }
+    .circles > div{
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      position: absolute;
+      line-height: 100px;
+      text-align: center;
+      animation: turn_left 20s linear infinite;
+    }
+    .cir01{background: chocolate; top:-50px; left:-50px;}
+    .cir02{background: greenyellow; top:-50px; right:-50px;}
+    .cir03{background: turquoise; bottom:-50px; left:-50px;}
+    .cir04{background: orchid; bottom:-50px; right:-50px;}
+
+    @keyframes turn_right {100%{transform: rotate(360deg);}}
+    @keyframes turn_left {100%{transform: rotate(-360deg);}}
+  </style>
+</head>
+<body>
+  <h2>css추가속성_keyframe(애니메이션)</h2>
+  <p>애니메이션 keyframe속성은 @keyframes속성안에서 애니메이션 내용을 작성한 후 사용자가 지정한 요소에 animation이름을 지정하여 자동으로 움직이도록 한다.</p>
+  <pre>
+    @keyframe 애니메이션 이름{
+      0%{시작할 내용}
+      100%{마지막 내용}
+      또는
+      to{시작할 내용}
+      from{마지막 내용}
+    }
+  </pre>
+  <ul>
+    <li>animation-name : 적용할 애니메이션 이름</li>
+    <li>animation-duration : 애니메이션 시간설정</li>
+    <li>animation-interation-count : 애니메이션 반복회수</li>
+    <li>animation-delay : 애니메이션 지연 시간설정</li>
+  </ul>
+
+  <h3>1. 자동으로 회전하는 박스</h3>
+  <div class="box01">회전박스</div>
+
+  <h3>2. 아이콘을 활용한 내비게이션 애니메이션</h3>
+  <p>https://cdnjs.com/libraries/font-awesome</p>
+  <ul class="sns">
+    <li><i class="fab fa-twitter-square"></i></li>
+    <li><i class="fab fa-facebook-square"></i></li>
+    <li><i class="fab fa-youtube-square"></i></li>
+    <li><i class="fab fa-instagram-square"></i></li>
+  </ul>
+
+  <h3>3. 서로 반대로 회전하는 이중 애니메이션</h3>
+  <div class="wrap">
+    <div class="back_circle"></div>
+    <div class="circles">
+      <div class="cir01">1</div>
+      <div class="cir02">2</div>
+      <div class="cir03">3</div>
+      <div class="cir04">4</div>
+    </div>
+  </div>
+</body>
+</html>

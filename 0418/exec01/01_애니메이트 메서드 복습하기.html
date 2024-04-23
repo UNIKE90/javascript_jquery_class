@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01_애니메이트 메서드 복습하기</title>
+  <style>
+    .jobs{
+      width: 500px;
+      height: 278px;
+      border:3px solid #000;
+      overflow: hidden;
+      position:relative
+    }
+    #txt{
+      position: relative;
+      top:-150px;
+      left:-130px;
+    }
+    #img{
+      position: relative;
+      right: -40px;
+      bottom:-278px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('#txt').animate({'left':'40px'}, 500);
+      $('#img').delay(200).animate({'bottom':'0px'},500);
+    })
+  </script>
+</head>
+<body>
+  <h2>01_애니메이트 메서드 복습하기</h2>
+  <div class="jobs">
+    <img src="./images/jobs_text.gif" alt="잡스 텍스트" id="txt">
+    <img src="./images/jobs.png" alt="잡스 사진" id="img">
+  </div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습_클래스조작을 활용한 콘트롤버튼 이미지 슬라이드</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    article *{margin:0;padding:0;}
+    article{
+      width:350px; height: 420px;
+      border: 3px solid #000;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+    article h3{
+      font-size: 30px; color: orange;
+      padding: 10px 0;
+    }
+    .slide{width: 1400px; display: flex; position: relative;}
+    .slide > li{list-style:none; width: 350px;}
+    .slide > li > a > img{width: 90%;}
+    /* 콘트롤버튼 서식 */
+    .c_btn{transform: translateY(8px);}
+    .c_btn span{
+      display:inline-block;
+      width: 15px; height: 15px;
+      border: 1px solid #333;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .c_btn span.act{
+      background: orange;
+    }
+    /* 콘트롤 버튼 */
+    i.fas{
+      color:#333;
+      font-size: 30px;
+      position: absolute;
+      right:10px; bottom:10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>실습_클래스조작을 활용한 콘트롤버튼 이미지 슬라이드</h2>
+  <p>이미지 목록 4장을 활용하여 콘트롤 버튼 클릭시 좌측으로 이동하는 슬라이드를 구현한다.</p>
+  <ul>
+    <li>이미지 350픽셀 사진 4장을 목록태그로 가로배치(flex, inline, inline-block, float, grid)한다.</li>
+    <li>1번사진 아래쪽에 span태그를 사용하여 콘트롤 버튼 모양을 구현</li>
+    <li>js나 제이쿼리에서 콘트롤 버튼 클릭시 각각 해당 인덱스값(i)을 구하여 (0,1,2,3)변수에 담는다.</li>
+    <li>콘트롤버튼 클릭시 나온 값을 통하여 연산수식에 -1, -350, -700, -1050값을 대입하여 슬라이드가 왼쪽방향으로 움직이게 한다.</li>
+    <li>콘트롤버튼에 적용할 'act'서식을 만들어서 클릭시 해당서식이 적용되게 하고 그렇지 않은 콘트롤버튼에는 서식을 제거한다.</li>
+    <li>autoslide기능 추가 - setIntercal 객체를 사용하여 매 3초마다 함수를 반복호출하여 자동실행</li>
+    <li>일시정지 버튼 클릭시 시간제거, play버튼 클릭시 자동재생(시간추가)하도록 한다.</li>
+  </ul>
+
+  <p>움직이는 이동값 = 0, -350, -700, -1050을 콘트롤버튼 클릭시 나오게 계산작업해야....</p>
+
+  <article>
+    <h3>신제품 출시</h3>
+    <ul class="slide">
+      <li><a href="#" title=""><img src="./images01/mcon3_2.png" alt=""></a></li>
+      <li><a href="#" title=""><img src="./images01/mcon3_3.png" alt=""></a></li>
+      <li><a href="#" title=""><img src="./images01/mcon3_4.png" alt=""></a></li>
+      <li><a href="#" title=""><img src="./images01/mcon3_5.png" alt=""></a></li>
+    </ul>
+    <div class="c_btn">
+      <span class="act">&nbsp;</span>
+      <span>&nbsp;</span>
+      <span>&nbsp;</span>
+      <span>&nbsp;</span>
+    </div>
+    <i class="fas fa-pause"></i>
+  </article>
+
+  <!-- 1. 제이쿼리 라이브러리 연결 -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+  <!-- 2. 제이쿼리 랩퍼 -->
+  <script>
+    $(document).ready(function(){
+      // 1. 변수선언
+      let c_btn = $('.c_btn span');
+      let img_w = 350;
+      let i=$('.c_btn span').index(); //초기값
+      // console.log(i);
+
+      // 2. 콘트롤버튼 클릭시 인덱스값 구하기
+      c_btn.click(function(){
+        i = $(this).index();
+        // console.log(i);
+        slide(i);
+      });
+
+      function slide(i){
+        let move = -(img_w*i);
+        // console.log(move);
+
+        // 움직이는 이동값을 계산하여 이미지 목록에 대입하여 움직이게 한다.
+        $('.slide').animate({'left':move},300);
+
+        // 기존 콘트롤 기존서식 제거하고
+        c_btn.removeClass('act');
+        // 선택한 콘트롤 버튼에 서식적용
+        $('.c_btn span').eq(i).addClass('act');
+      }
+      // 자동으로 움직이는 함수
+      function move(){
+        if(i==3){ //인덱스 번호가 3이면
+          i=0; // 0으로 대입하여 슬라이드가 처음으로 나오게
+        }else{ // 그렇지 않은 경우
+          i++; // 1씩 증가하여 다음 슬라이드가 나오게
+        }
+          slide(i); // 슬라이드에 대입
+      }
+      // 시간객체를 사용하여 매 3초마다 move함수를 반복호출한다.
+      let Timer = setInterval(move, 3000); //3초마다
+
+      // 정지버튼 클릭시 시간을 제거
+      $('i.fa-pause').click(function(){
+        clearInterval(Timer);
+        if($(this).hasClass('fa-pause')){
+          clearInterval(Timer);
+          $(this).attr('class','fas fa-play'); //버튼모양이 변경되도록한다.
+        }else{
+          Timer = setInterval(move, 3000); //3초마다
+          $(this).attr('class','fas fa-pause'); //버튼모양이 변경되도록한다.
+        }
+      });
+
+      // play버튼 클릭시 다시 시간을 생성하여 자동으로 움직이게
+    });
+  </script>
+</body>
+</html>

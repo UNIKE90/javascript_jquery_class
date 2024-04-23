@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습예제_제이쿼리slideOut</title>
+  <style>
+    *{padding: 0px; margin: 0px;}
+    .wrapper{
+      width: 1034px;
+      margin: 0 auto
+    }
+    img{display: block;}
+    .modal{
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,.8);
+      top:0;
+      left:0;
+    }
+    #m_img{
+      position:absolute;
+      top: 50%;
+      left:50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid #ccc;
+    }
+    #m_img img{
+      width: 600px;
+    }
+    #m_img p{
+      background: #fff;
+      text-align: right;
+      padding:5px;
+    }
+  </style>
+  <script src="./script/jquery-3.7.1.js"></script>
+  <script>
+    $(document).ready(function(){
+    let modal = `
+        <div class="modal">
+          <div id="m_img">
+            <img src="./images/popup.jpg" alt="팝업">
+            <p><input type="button" value="닫기" id="m_close"></p>
+          </div>
+        </div>`;
+    //body태그의 맨 아래에 modal변수값을 출력한다.
+      $('body').append(modal);
+      $('#close').click(function(){
+        $(top_banner).slideUp();
+      });
+      $('#m_close').click(function(){
+        $('.modal').fadeOut();
+      })
+    });
+  </script>
+</head>
+<body>
+  <div class="wrapper">
+    <div id="top_banner">
+      <img src="./images/main01_01.jpg" alt="상단배너">
+      <input type="button" value="닫기" id="close">  
+    </div>
+    <img src="./images/main01_02.jpg" alt="">
+  </div>
+</body>
+</html>

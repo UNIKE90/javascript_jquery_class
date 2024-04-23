@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 기초_함수의 개념과 활용</title>
+  <style>
+    .txt01{color: #00f;}
+    .txt02{color: #f00;background: #ff0;}
+  </style>
+</head>
+<body>
+  <h2>자바스크립트 기초_함수의 개념과 활용</h2>
+  <p>함수란? 일련의 내용을 삽입하여 사용자가 언제든 호출하여 실행할 수 있는 실행문이다.</p>
+  <ul>
+    <li>언제든 필요할때 다시 실행이 가능</li>
+    <li>코드의 중복을 피할 수 있고, 재사용이 가능하다.</li>
+    <li>유지보수의 용이성이 높다.</li>
+    <li>함수는 내장함수(prompt, alert......)와 사용자 정의함수가 있다.</li>
+  </ul>
+
+  <pre>
+    1. 매개변수가 없는 일반함수
+    function 함수명(){
+      실행할 내용;
+    }
+
+    2. 매개변수가 있는 함수
+    function 함수명(변수1, 변수2 ....){
+      실행할 내용;
+    }
+
+    3. 리턴값이 있는 함수
+    function 함수명(변수1, 변수2......){
+      실행할 내용;
+      return 실행결과;
+    }
+  </pre>
+
+  <script>
+    //1. 매개변수가 없는 일반함수
+    function print01(){
+      document.write('<p>매개변수가 없는 일반함수입니다.</p>')
+    }
+
+    //2. 매개변수가 있는 함수
+    function print02(a, b){
+      document.write(`<p><span class="txt01">${a}</span>
+        가 사는 지역은 
+        <span class="txt02">${b}</span>
+        입니다.</p>`);
+    }
+    
+    print01(); //함수실행
+    //print02('철수','부산');
+
+    let name = prompt('이름을 입력하세요.');
+    let region = prompt('사는 지역을 입력하세요.');
+    print02(name,region);
+
+    
+    //3. 리턴값이 있는 함수
+    function print03(){
+      document.write('<p>리턴문이 있는 일반함수입니다.</p>');
+      return document.write('<p>이 메세지가 출력되면 다음 동작은 실행이 되지 않습니다.</p>');
+
+      alert('이 메세지가 화면에 출력될까요?');
+    }
+    //함수실행
+    print03();
+  </script>
+</body>
+</html>

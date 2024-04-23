@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습예제_쿠팡메인슬라이드</title>
+  <style>
+    *{margin:0px; padding:0px;}
+    ul, li{list-style:none;}
+    img{display: block;}
+    .cursor{
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 10000;
+      /* 마우스 포인터를 가리지 않게 해준다 */
+      pointer-events: none; 
+    }
+    /* 커서 중앙으로 잡아주기 위해 */
+    .c_inner{
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: rgba(0,0,0,.8);
+      backdrop-filter: invert(1);
+      transform: translate(-50%, -50%);
+    }
+    .button .c_inner::before{
+      content: "mouseover";
+      color: #fff;
+      transform: translate(10px, 35px);
+      position: absolute;
+    }
+    /* body{cursor: none;}
+    body a{cursor: none;} */
+    header{text-align: center;}
+    .m_slide{
+      width: 100%;
+      height: 450px;
+      position: relative;
+    }
+    .m_slide h2{display: none;}
+    .m_slide > img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+    }
+    .m_slide > ul{
+      position: absolute;
+      top: 40px;
+      right:20%;
+    }
+    .m_slide > ul > li{
+      border:2px solid #fff;
+    }
+    .m_slide > ul > li:hover{
+      border:2px solid #00f;
+    }
+    .m_slide > ul > li.act{
+      border: 2px solid #00f;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script>
+    $(document).ready(function(){
+      // 변수선언
+      const s_li = $('.m_slide > ul > li');
+      const s_img = $('#main_slide_image');
+      let img_url;
+
+      // 클릭 이벤트 제거
+      s_li.find('a').click(function(e){
+        e.preventDefault();
+      });
+
+      s_li.mouseenter(function(){
+        s_li.removeClass('act');
+        $(this).addClass('act');
+        img_url = $(this).find('a').attr('href');
+        // console.log(img_url);
+        s_img.attr('src',img_url);
+        $('.cursor').addClass('button');
+      });
+      s_li.mouseleave(function(){
+        $('.cursor').removeClass('button');
+      })
+
+      document.addEventListener('mousemove',function(e){
+        let x = e.clientX;
+        let y = e.clientY;
+
+        $('.cursor').css('transform','translate('+x+'px,'+y+'px)');
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="cursor">
+    <div class="c_inner"></div>
+  </div>
+  <!-- 헤더영역 -->
+  <header>
+    <h1>로고</h1>
+  </header>
+  <!-- 메인영역 -->
+  <main>
+    <article class="m_slide">
+      <h2>메인슬라이드</h2>
+      <img src="./images02/main_slide1.jpg" alt="메인슬라이드 이미지" id="main_slide_image">
+      <ul>
+        <li class="act"><a href="./images02/main_slide1.jpg" title="슬라이드1버튼"><img src="./images02/menu01.jpg" alt="메뉴1"></a></li>
+        <li><a href="./images02/main_slide2.jpg" title="슬라이드2버튼"><img src="./images02/menu02.jpg" alt="메뉴2"></a></li>
+        <li><a href="./images02/main_slide3.jpg" title="슬라이드3버튼"><img src="./images02/menu03.jpg" alt="메뉴3"></a></li>
+        <li><a href="./images02/main_slide4.jpg" title="슬라이드4버튼"><img src="./images02/menu04.jpg" alt="메뉴4"></a></li>
+        <li><a href="./images02/main_slide5.jpg" title="슬라이드5버튼"><img src="./images02/menu05.jpg" alt="메뉴5"></a></li>
+        <li><a href="./images02/main_slide6.jpg" title="슬라이드6버튼"><img src="./images02/menu06.jpg" alt="메뉴6"></a></li>
+      </ul>
+    </article>
+  </main>
+  <!-- 푸터영역 -->
+  <footer></footer>
+</body>
+</html>

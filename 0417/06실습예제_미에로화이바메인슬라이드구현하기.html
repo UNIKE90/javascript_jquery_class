@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06실습예제_미에로화이바메인슬라이드구현하기</title>
+  <style>
+    *{margin:0px;padding:0px;}
+    li{list-style: none;}
+    header{
+      width: 100%;
+      height: 100px; background: rgba(0,0,0,.3);
+      position:absolute; z-index: 1000;
+    }
+    /* main{} */
+    .slide{position:relative; width:100%; height: 100vh; overflow: hidden; object-fit: cover;}
+    .slide_wrapper div{
+      width: 100%;
+      position: absolute;
+    }
+    .slide_wrapper div img{
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+    }
+    .slide_wrapper div:first-child{z-index: 30;}
+    .slide_wrapper div:nth-child(2){z-index: 20; display: none;}
+    .slide_wrapper div:last-child{z-index:10; display: none;}
+    @media screen and (min-width:768px) and (max-width: 1024px){
+      .slide_wrapper div img{height: 100vh; object-fit:cover;}
+    }
+    @media screen and (max-width:768px) {
+      .slide_wrapper div img{height: 100vh; object-fit:cover;}
+    }
+    .lnb ul{
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      position: absolute;
+      bottom:50px; left:50%;
+      transform: translateX(-50%);
+      z-index: 100;
+    }
+    .lnb li{
+      width: 15px; height: 15px; border-radius: 50%;
+      background: #fff;
+      margin: 0px 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .act{
+      background:#f8640f !important;
+      width: 50px !important;
+      border-radius: 10px !important;
+    }
+  </style>
+  <!-- 1. 제이쿼리 라이브러리 연결 -->
+  <script src="./script/jquery-3.7.1.js"></script>
+  <!-- 2. 제이쿼리 랩퍼 -->
+  <script>
+    $(document).ready(function(){
+      //1. 변수
+      let i = 0; //인덱스값
+      let slide = $('.slide_wrapper div');
+      let c_btn = $('.lnb li');
+
+      //2. 이미지가 변하는 함수
+      function fadeInOut(){
+        if(i==2){ //만약에 인덱스값이 2라면 = 마지막 이미지라면
+          i=0; //인덱스값을 1로 대입하고
+        }else{ //그렇지 않으면
+          i++; //1씩 더하여 다음 이미지가 나오게한다.
+        }
+        slide.fadeOut(); //보이는 이미지 전부 숨기고
+        c_btn.removeClass('act'); //보이는 모든 act서식을 없앤다
+        slide.eq(i).fadeIn(); // 인덱스번호에 해당하는 n번째 이미지가 나옴
+        c_btn.eq(i).addClass('act'); //인덱스번호에 해당하는 콘트롤버튼에 서식 적용
+      }
+
+      //3. 매 3초마다 반복실행 => Timer
+      let Timer = setInterval(fadeInOut, 3000);
+
+      // 4. 버튼 클릭시 실행
+      c_btn.click(function(){
+        clearInterval(Timer);
+        if(i==$(this).index()){
+          Timer = setInterval(fadeInOut, 3000);
+        }else{
+          i=$(this).index();
+          slide.fadeOut(); //보이는 이미지 전부 숨기고
+          c_btn.removeClass('act'); //보이는 모든 act서식을 없앤다
+          slide.eq(i).fadeIn(); // 인덱스번호에 해당하는 n번째 이미지가 나옴
+          c_btn.eq(i).addClass('act'); //인덱스번호에 해당하는 콘트롤버튼에 서식 적용
+          Timer = setInterval(fadeInOut, 3000);
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <!-- 상단헤더영역 -->
+  <header></header>
+
+  <!-- 메인영역 -->
+  <main>
+    <article class="slide">
+      <nav class="lnb">
+        <ul>
+          <li class="act"></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </nav>
+      <div class="slide_wrapper">
+        <div><img src="./images/visual01.jpg" alt="배너1"></div>
+        <div><img src="./images/visual02.jpg" alt="배너2"></div>
+        <div><img src="./images/visual03.jpg" alt="배너3"></div>
+      </div>
+    </article>
+  </main>
+
+  <!-- 푸터영역 -->
+  <footer></footer>
+</body>
+</html>
