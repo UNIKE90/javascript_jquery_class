@@ -63,6 +63,7 @@
       cursor: pointer;
       margin: 0px 8px;
     }
+    .pagination div:hover{background: #333;}
     .pagination div.act{background: #333;}
   </style>
   <!-- 제이쿼리 -->
@@ -256,25 +257,58 @@
         Timer = setInterval(move_left, 4000);
       });
 
+      // // 버튼 클릭시
+      // msbtn.click(function(){
+      //   console.log($(this).index());
+      //   let i = num-$(this).index();
+      //   console.log(i);
+      //   clearInterval(Timer); // 기존 자동슬라이드 종료
+      //   if(i==0){
+      //   }if(i<0){
+      //     while(0>i){
+      //       move_left();
+      //       i++;
+      //     }
+      //   }else{
+      //     while(0<i){
+      //       move_right();
+      //       i--;
+      //     }
+      //   }
+      //   Timer = setInterval(move_left, 4000);
+      // });
+
+      let i;
       msbtn.click(function(){
-        console.log($(this).index());
-        let i = num-$(this).index();
-        console.log(i);
-        clearInterval(Timer); // 기존 자동슬라이드 종료
+        clearInterval(Timer);
+        i=$(this).index(); //0,1,2,3,4
+        // console.log($(this).index());
+        num=i;
+        msbtn.removeClass('act');
+        msbtn.eq(num).addClass('act');
         if(i==0){
-        }if(i<0){
-          while(0>i){
-            move_left();
-            i++;
-          }
-        }else{
-          while(0<i){
-            move_right();
-            i--;
-          }
+          $('.mslide ul').html(
+            '<li><a href="#" title="슬라이드5"><img src="./images/slide5.jpg" alt="슬라이드5"></a></li> <li><a href="#" title="슬라이드1"><img src="./images/slide01.png" alt="슬라이드1"></a></li> <li><a href="#" title="슬라이드2"><img src="./images/slide02.png" alt="슬라이드2"></a></li> <li><a href="#" title="슬라이드3"><img src="./images/slide3.jpg" alt="슬라이드3"></a></li> <li><a href="#" title="슬라이드4"><img src="./images/slide4.jpg" alt="슬라이드4"></a></li>' 
+          )
+        }else if(i==1){
+          $('.mslide ul').html(
+            '<li><a href="#" title="슬라이드1"><img src="./images/slide01.png" alt="슬라이드1"></a></li> <li><a href="#" title="슬라이드2"><img src="./images/slide02.png" alt="슬라이드2"></a></li> <li><a href="#" title="슬라이드3"><img src="./images/slide3.jpg" alt="슬라이드3"></a></li> <li><a href="#" title="슬라이드4"><img src="./images/slide4.jpg" alt="슬라이드4"></a></li> <li><a href="#" title="슬라이드5"><img src="./images/slide5.jpg" alt="슬라이드5"></a></li>'
+          )
+        }else if(i==2){
+          $('.mslide ul').html(
+            '<li><a href="#" title="슬라이드2"><img src="./images/slide02.png" alt="슬라이드2"></a></li> <li><a href="#" title="슬라이드3"><img src="./images/slide3.jpg" alt="슬라이드3"></a></li> <li><a href="#" title="슬라이드4"><img src="./images/slide4.jpg" alt="슬라이드4"></a></li> <li><a href="#" title="슬라이드5"><img src="./images/slide5.jpg" alt="슬라이드5"></a></li><li><a href="#" title="슬라이드1"><img src="./images/slide01.png" alt="슬라이드1"></a></li>' 
+          )
+        }else if(i==3){
+          $('.mslide ul').html(
+            '<li><a href="#" title="슬라이드3"><img src="./images/slide3.jpg" alt="슬라이드3"></a></li> <li><a href="#" title="슬라이드4"><img src="./images/slide4.jpg" alt="슬라이드4"></a></li> <li><a href="#" title="슬라이드5"><img src="./images/slide5.jpg" alt="슬라이드5"></a></li><li><a href="#" title="슬라이드1"><img src="./images/slide01.png" alt="슬라이드1"></a></li> <li><a href="#" title="슬라이드2"><img src="./images/slide02.png" alt="슬라이드2"></a></li>' 
+          )
+        }else if(i==4){
+          $('.mslide ul').html(
+            '<li><a href="#" title="슬라이드4"><img src="./images/slide4.jpg" alt="슬라이드4"></a></li> <li><a href="#" title="슬라이드5"><img src="./images/slide5.jpg" alt="슬라이드5"></a></li><li><a href="#" title="슬라이드1"><img src="./images/slide01.png" alt="슬라이드1"></a></li> <li><a href="#" title="슬라이드2"><img src="./images/slide02.png" alt="슬라이드2"></a></li> <li><a href="#" title="슬라이드3"><img src="./images/slide3.jpg" alt="슬라이드3"></a></li>' 
+          )
         }
-        Timer = setInterval(move_left, 4000);
-      });
+      })
+      Timer = setInterval(move_left, 4000);
     });
   </script>
 </body>
