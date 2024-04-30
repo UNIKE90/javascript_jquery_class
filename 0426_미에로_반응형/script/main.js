@@ -1,11 +1,75 @@
 // 제이쿼리 메인페이지
 $(document).ready(function(){
   //1. 변수
+  let gnb = $('.gnb > ul > li > a');//메인메뉴
   let i = 0; //인덱스값
   let slide = $('.slide_wrapper div');
   let c_btn = $('.lnb li');
   // 탭메뉴 변수
   let t_mnu = $('.tab_con li a');
+  // 토글 변수
+  const toggle = $('#toggle');
+  const bars = document.querySelectorAll('#toggle span');
+  // 탑버튼
+  const t_btn = $('.t_btn');
+
+  t_btn.hide();
+  $(window).scroll(function(){
+    let spos = $(this).scrollTop();
+    if(spos>=1100){
+      t_btn.stop().fadeIn();
+    }else{
+      t_btn.stop().fadeOut();
+    }
+  });
+  t_btn.click(function(){
+    $('html, body').animate({scrollTop:'0px'},300);
+  });
+
+  // 모바일 해상도에서 토글버튼 클릭시 메인메뉴가 아래로 펼쳐지거나 위로 접히게 한다.
+  toggle.click(function(){
+    $('.gnb').slideToggle();
+    bars.forEach(bar => bar.classList.toggle('toggle'));
+  });
+
+  // 모달창 쿠키 적용
+  let modal = `
+  <div class="modal">
+    <div class="m_inner">
+      <a href="#" title="이벤트 페이지로 바로가기">
+        <img src="./images/popup.jpg" alt="배너">
+      </a>
+      <input type="checkbox" id="ch">
+      <label for="ch">오늘 하루 열지 않음</label>
+      <input type="button" value="닫기" id="c_btn">
+    </div>
+  </div>
+  `;
+  $('body').append(modal);
+
+  let ch = $("#ch");
+  const popup = $('.modal');
+  const m_btn = $('#c_btn');
+  const m_c_btn = $('#ch');
+  if($.cookie('popup')=='none'){
+    popup.hide();
+  };
+  function close_popup(){
+    if(ch.is(':checked')){
+      $.cookie('popup','none',{expires:1, path:'/'});
+    }else{}
+    popup.fadeOut()
+  };
+  m_btn.click(function(){
+    close_popup();
+  });
+
+  // 메인메뉴 클릭시 해당 서브만 나오게하기
+  gnb.click(function(){
+    //내가 선택한 a요소의 sub메뉴 나오게 하고 부모의 형제요소들의 자손인 .sub는 숨긴다.
+    $(this).next().toggle().parent().siblings().find('.sub').hide();
+    return false;
+  });
 
   //2. 이미지가 변하는 함수
   function fadeInOut(i){
@@ -63,12 +127,16 @@ $(document).ready(function(){
 
   // <3. 탭콘텐츠> 서식
   // 탭메뉴 클릭시 a서식 지우고 내가 클릭한 메뉴만 t_act적용하기
-  t_mnu.click(function(){
+  t_mnu.click(function(e){
+    e.preventDefault();
+    let w_size = $(window).width();
+    let t_index = $(this).parent().index();
     $(this).addClass('t_act').parent().siblings().find('a').removeClass('t_act');
+
+    if(w_size>=1025){ // pc해상도일 경우 적용되는 기능
     $('.cont').hide(); //보이는 콘텐츠 모두 숨기고
     $(this).next().show(); // 해당 콘텐츠 나오게 한다
 
-    let t_index = $(this).parent().index();
     // console.log(t_index);
 
     if(t_index==2){
@@ -76,7 +144,33 @@ $(document).ready(function(){
     }else{
       $('.tab_con_wrap article').height(500);
     }
+    
+    }else if(w_size>=768){
+       // 탭메뉴 클릭시 아이콘폰트 방향이 변경됨어야
+      $(this).find('i.fa-solid').attr('class','fa-solid fa-caret-up').parent().parent().siblings().find('i.fa-solid').attr('class','fa-solid fa-caret-down');
+      
+       $('.cont').slideUp(); //보이는 콘텐츠 모두 숨기고
+       $(this).next().slideToggle(); // 해당 콘텐츠 나오게 한다
+  
+        if(t_index==2){
+          $('.tab_con_wrap article').height(1250);
+        }else{
+          $('.tab_con_wrap article').height(700);
+        }
+    }else{// 화면의 너비가 767보다 작으면 모바일 화면
 
+      // 탭메뉴 클릭시 아이콘폰트 방향이 변경됨어야
+      $(this).find('i.fa-solid').attr('class','fa-solid fa-caret-up').parent().parent().siblings().find('i.fa-solid').attr('class','fa-solid fa-caret-down');
+      
+    $('.cont').slideUp(); //보이는 콘텐츠 모두 숨기고
+    $(this).next().slideToggle(); // 해당 콘텐츠 나오게 한다
+
+      if(t_index==2){
+        $('.tab_con_wrap article').height(1000);
+      }else{
+        $('.tab_con_wrap article').height(700);
+      }
+    }
     return false;
   });
 

@@ -22,6 +22,50 @@ header > h1{
 header > h1 img{
   width: 100%;
 }
+
+/* toggle버튼 숨기기 */
+#toggle{
+  display: none;
+  background: rgba(0,0,0,.3);
+  width: 32px; 
+  height: 32px;
+  padding: 8px;
+  position: absolute;
+  right:3%; top:24px;
+  border: 1px solid var(--txt_color1);
+}
+#toggle:hover{
+  background: var(--main_color);
+  border: 1px solid var(--main_color);
+}
+#toggle span{
+  background: var(--txt_color1);
+  display: inline-block;
+  width: 32px;
+  height: 2px;
+  position: absolute;
+  transition: 0.3s;
+}
+#toggle span:first-child{top: 12px;}
+#toggle span:nth-child(2){top: 23px;}
+#toggle span:last-child{bottom: 12px;}
+
+#toggle span.toggle:first-child{
+  transform: rotate(45deg) translate(3px, -3px);
+  transform-origin: top left;
+  width: 32px;  
+}
+#toggle span.toggle:nth-child(2){
+  transform-origin: center;
+  width: 0;  
+}
+#toggle span.toggle:last-child{
+  transform: rotate(-45deg) translate(3px, 3px);
+  transform-origin: bottom left;
+  width: 32px;  
+}
+
+
 /* 메인메뉴 서식 */
 .gnb{
   position: absolute;
@@ -138,3 +182,148 @@ address > h2{
 }
 address > h2 img{width: 100%;}
 address p{padding-right: 3%; line-height: 70px;}
+
+/* 모바일 해상도일 경우 토글버튼 보이게 하기 */
+@media screen and (max-width: 767px){
+  header > h1{top:20px;}
+  #toggle{display:block;}
+  /* 모바일 내비게이션 */
+  .gnb{
+    background: var(--txt_color1);
+    width: 90%; right:5%; top: 90px;
+    display: none;
+  }
+  .gnb > ul{
+    display: block;
+  }
+  .gnb > ul > li{
+    text-align: center;
+    margin:0px;
+    width: 100%;
+    border: none;
+  }
+  .gnb > ul > li > a{
+    color: var(--base_txt_color);
+    font-size: 0.85rem;
+    display: block;
+  }
+  .gnb > ul > li:last-child > a{
+    background: var(--main_color);
+    padding:0;
+    transition:0.3s;
+    color: var(--txt_color1);
+    border:none;
+    width: 100%;
+    left: 0;
+    display: block;
+  }
+  .gnb > ul > li:last-child > a:hover{
+    border:none;
+    color: var(--txt_color1);
+    background: var(--base_txt_color);
+  }
+  .gnb li .sub{
+    width: 100%; z-index: 100;
+    border: none; padding: 0px;
+  }
+  .gnb li .sub a{background: #ccc;}
+  .gnb li:first-child .sub a, .gnb li:nth-child(2) .sub a, .gnb li:nth-child(4) .sub a{padding: 0;}
+  .gnb li:first-child .sub a{width: 100%; left: 0px;}
+  .gnb li:nth-child(2) .sub a{width: 100%; left: 0px;}
+  .gnb li:first-child .sub{width: 100%;} 
+  .gnb li:nth-child(2) .sub{width: 100%;}
+  .gnb li:nth-child(4) .sub{width: 100%;}
+
+  /* 모바일 푸터영역 서식 */ 
+  .f_inner > nav{
+    width: 96%;
+    flex-wrap: wrap;
+  }
+  .f_inner dl{width: 50%; margin-bottom: 10px;}
+  .f_inner dl:last-child{text-align: center; width: 100%;}
+  address{
+    display: block;
+    text-align: center;
+    height: 100px;
+  }
+  address > h2{
+    margin: 0 auto;
+  }
+  address p{padding-right: 0%; line-height: 160%;}
+}
+
+/* 태블릿 해상도일 경우 */
+@media screen and (min-width:768px) and (max-width:1024px){
+  header > h1{top:20px;}
+  #toggle{display:block;}
+  /* 태블릿 내비게이션 */
+  .gnb{
+    background: var(--txt_color1);
+    width: 90%; right:5%; top: 90px;
+    display: none;
+  }
+  .gnb > ul{
+    display: block;
+  }
+  .gnb > ul > li{
+    text-align: center;
+    margin:0px;
+    width: 100%;
+    border: none;
+  }
+  .gnb > ul > li > a{
+    color: var(--base_txt_color);
+    font-size: 1rem;
+    display: block;
+    line-height: 60px;
+  }
+  .gnb > ul > li:last-child > a{
+    background: var(--main_color);
+    padding:0;
+    transition:0.3s;
+    color: var(--txt_color1);
+    border:none;
+    width: 100%;
+    left: 0;
+    display: block;
+    line-height: 60px;
+  }
+  .gnb > ul > li:last-child > a:hover{
+    border:none;
+    color: var(--txt_color1);
+    background: var(--base_txt_color);
+  }
+  .gnb li .sub{
+    width: 100%; z-index: 100;
+    border: none; padding: 0px;
+  }
+  .gnb li .sub a{
+    background: #ccc;
+    line-height: 50px;
+  }
+  .gnb li:first-child .sub a, .gnb li:nth-child(2) .sub a, .gnb li:nth-child(4) .sub a{padding: 0;}
+  .gnb li:first-child .sub a{width: 100%; left: 0px;}
+  .gnb li:nth-child(2) .sub a{width: 100%; left: 0px;}
+  .gnb li:first-child .sub{width: 100%;} 
+  .gnb li:nth-child(2) .sub{width: 100%;}
+  .gnb li:nth-child(4) .sub{width: 100%;}
+
+  /* 모바일 푸터영역 서식 */ 
+  .f_inner > nav{
+    width: 70%;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    /* border: 3px solid #ff0; */
+  }
+  .f_inner dl{width: 50%; margin-bottom: 10px;}
+  .f_inner dl:last-child{text-align: center; width: 100%;}
+  address{
+    display: block;
+    text-align: center;
+    height: 100px;
+  }
+  address > h2{
+    margin: 0 auto;
+  }
+  address p{padding-right: 0%; line-height: 160%;}
+}
